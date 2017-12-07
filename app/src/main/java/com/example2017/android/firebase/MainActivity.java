@@ -59,109 +59,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Firebase.setAndroidContext(this);
-
-
-
-        mdatabase = FirebaseDatabase.getInstance().getReference().child("Blog");
-        s = FirebaseStorage.getInstance().getReference();
-
-
-
-
-        mre = (RecyclerView) findViewById(R.id.view);
-        mre.setHasFixedSize(true);
-        mre.setLayoutManager(new LinearLayoutManager(this));
-
 
 
 
     }
 
 
+public void start(View v) {
+    Intent intent = new Intent(this, Eldalel.class);
+    startActivity(intent);
 
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        Retrive();
-    }
-
-
-
-
-
-
-
-
-
-    public void Retrive(){
-
-
-        FirebaseRecyclerAdapter<Posts,Post_viewholder> firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<Posts, Post_viewholder>(
-                Posts.class,
-                R.layout.cardview,
-                Post_viewholder.class,
-                mdatabase
-
-        ) {
-            @Override
-            protected void populateViewHolder(Post_viewholder viewHolder, Posts model, int position) {
-
-                viewHolder.SetTitle((model.getTitle()));
-             //   viewHolder.SetWriter(model.getWriter());
-                viewHolder.SetImage(getApplicationContext(),model.getImg());
-
-
-            }
-        };
-
-        mre.setAdapter(firebaseRecyclerAdapter);
-
-    }
-
-
-    public  static  class Post_viewholder extends RecyclerView.ViewHolder{
-
-        View view;
-        public Post_viewholder(View itemView) {
-            super(itemView);
-
-            view=itemView;
-
-
-        }
-    public void SetTitle(String title)
-    {
-
-        TextView desc=(TextView)view.findViewById(R.id.textView_desc);
-        desc.setText(title);
-    }
-
-
-        /*
-public void SetWriter(String writer)
-    {
-    TextView wri=(TextView)view.findViewById(R.id.textView_writer);
-    wri.setText(writer);
-    }
-*/
-
-
-        public void SetImage(Context cnt,String img )
-    {
-
-        ImageView imgview=(ImageView)view.findViewById(R.id.imageView);
-        Picasso.with(cnt).load(img).into(imgview);
 }
-
-
-    }
-
-
-
-
 
 
 }
