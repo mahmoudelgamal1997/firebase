@@ -5,8 +5,19 @@ package com.example2017.android.firebase;
  */
 public class Posts {
     private String title;
-    private String content;
     private String writer;
+    private String img;
+
+
+
+    public Posts() {
+    }
+
+    public Posts(String title, String writer, String img) {
+        this.title = title;
+        this.writer = writer;
+        this.img = img;
+    }
 
     public void setTitle(String title)
     {
@@ -16,26 +27,18 @@ public class Posts {
         return title;
     }
 
-    public void setContent(String content)
-    {
-        this.content = content;
-    }
-
-    public String getContent()
-
-    {
-        return content;
-    }
-
-    public void setWriter(String writer)
-    {
-        this.writer = writer;
-    }
-
-    public String getWriter()
-
-    {
+    public String getWriter() {
         return writer;
     }
 
+    public void setWriter(String writer) {
+        this.writer = writer;
+    }
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
 }
