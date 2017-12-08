@@ -7,10 +7,14 @@ public class Posts {
     private String title;
     private String writer;
     private String img;
+    private String catorgy_name;
+    private String catorgy_image;
 
 
 
-    public Posts() {
+    public Posts()
+    {
+
     }
 
     public Posts(String title, String writer, String img) {
@@ -40,5 +44,21 @@ public class Posts {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public String getCatorgy_name() {
+        return catorgy_name;
+    }
+
+    public void setCatorgy_name(String catorgy_name) {
+        this.catorgy_name = catorgy_name;
+    }
+
+    public String getCatorgy_image() {
+        return catorgy_image;
+    }
+
+    public void setCatorgy_image(String catorgy_image) {
+        this.catorgy_image = catorgy_image;
     }
 }
