@@ -32,6 +32,6 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:21.+'
     compile 'com.firebaseui:firebase-ui-database:0.4.0'
     compile 'com.squareup.picasso:picasso:2.5.0'
-
+    compile 'com.squareup.okhttp3:okhttp:3.9.1'
 }
 apply plugin: 'com.google.gms.google-services'

@@ -18,6 +18,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 public class Eldalel extends AppCompatActivity {
@@ -37,7 +39,7 @@ public class Eldalel extends AppCompatActivity {
 
         mdatabase = FirebaseDatabase.getInstance().getReference().child("City");
         s = FirebaseStorage.getInstance().getReference();
-
+        mdatabase.keepSynced(true);
 
 
 
@@ -83,7 +85,7 @@ public class Eldalel extends AppCompatActivity {
 
                 viewHolder.SetTitle((model.getTitle()));
                 viewHolder.SetImage(getApplicationContext(),model.getImg());
-                Toast.makeText(getApplicationContext(),model.getCatorgy_name(),Toast.LENGTH_LONG);
+           //     Toast.makeText(getApplicationContext(),model.getCatorgy_name(),Toast.LENGTH_LONG);
 
             }
         };
@@ -112,100 +114,26 @@ public class Eldalel extends AppCompatActivity {
         }
 
 
-        public void SetImage(Context cnt, String img) {
+        public void SetImage(final Context cnt, final String img) {
 
-            ImageView imgview = (ImageView) view.findViewById(R.id.imageView);
-            Picasso.with(cnt).load(img).into(imgview);
+            final ImageView imgview = (ImageView) view.findViewById(R.id.imageView);
+            Picasso.with(cnt).load(img).networkPolicy(NetworkPolicy.OFFLINE).into(imgview, new Callback() {
+                @Override
+                public void onSuccess() {
+
+                }
+
+                @Override
+                public void onError() {
+                    Picasso.with(cnt).load(img).into(imgview);
+                }
+            });
+
+
+
         }
+
 
 
     }  }
 
-/*
-
-    public class FirebaseViewHolder extends RecyclerView.ViewHolder {
-
-        public ImageView mImageView;
-        public TextView mPostTitle;
-        public TextView mPostDesc;
-
-        public FirebaseViewHolder(View itemView) {
-            super(itemView);
-
-            mImageView = (ImageView) itemView.findViewById(R.id.image_recyclerview);
-            mPostTitle = (TextView) itemView.findViewById(R.id.tv_title_recyclerview_item);
-            mPostDesc = (TextView) itemView.findViewById(R.id.tv_desc_recyclerview_item);
-
-            //listener set on ENTIRE ROW, you may set on individual components within a row.
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mClickListener.onItemClick(v, getAdapterPosition());
-
-                }
-            });
-            itemView.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
-                    mClickListener.onItemLongClick(v, getAdapterPosition());
-                    return true;
-                }
-            });
-
-        }
-        private FirebaseViewHolder.ClickListener mClickListener;
-
-        //Interface to send callbacks...
-        public interface ClickListener{
-            public void onItemClick(View view, int position);
-            public void onItemLongClick(View view, int position);
-        }
-
-        public void setOnClickListener(FirebaseViewHolder.ClickListener clickListener){
-            mClickListener = clickListener;
-        }
-    }
-
-    Creating the FirebaseRecyclerAdapter.
-
-            FirebaseRecyclerAdapter<Post, FirebaseViewHolder> adapter = new   FirebaseRecyclerAdapter<Post, FirebaseViewHolder>(
-            Post.class,
-            R.layout.recyclerview_list_item,
-            FirebaseViewHolder.class,
-            databaseReference
-
-    ) {
-        @Override
-        protected void populateViewHolder(FirebaseViewHolder viewHolder, Post model, int position) {
-
-            Picasso.with(getActivity())
-                    .load(model.image_url)
-                    .into(viewHolder.mImageView);
-            Log.v(TAG, model.image_url);
-            //viewHolder.mImageView.setImageResource(R.mipmap.ic_launcher);
-            viewHolder.mPostTitle.setText(model.title);
-            viewHolder.mPostDesc.setText(model.desc);
-        }
-
-        @Override
-        public FirebaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            FirebaseViewHolder viewHolder = super.onCreateViewHolder(parent, viewType);
-            viewHolder.setOnClickListener(new FirebaseViewHolder.ClickListener() {
-                @Override
-                public void onItemClick(View view, int position) {
-                    Toast.makeText(getApplicationContext(), "Item clicked at " + position, Toast.LENGTH_SHORT).show();
-                }
-
-                @Override
-                public void onItemLongClick(View view, int position) {
-                    Toast.makeText(getApplicationContext(), "Item long clicked at " + position, Toast.LENGTH_SHORT).show();
-                }
-            });
-            return viewHolder;
-        }
-
-
-
-
-
-*/
