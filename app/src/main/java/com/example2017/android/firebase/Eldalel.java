@@ -78,14 +78,14 @@ public class Eldalel extends AppCompatActivity {
                 R.layout.cardview,
                 Post_viewholder.class,
                 mdatabase
+        )
 
-        ) {
+        {
             @Override
             protected void populateViewHolder(Post_viewholder viewHolder, Posts model, int position) {
 
                 viewHolder.SetTitle((model.getTitle()));
                 viewHolder.SetImage(getApplicationContext(),model.getImg());
-           //     Toast.makeText(getApplicationContext(),model.getCatorgy_name(),Toast.LENGTH_LONG);
 
             }
         };
