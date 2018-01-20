@@ -33,6 +33,15 @@ public void start(View v) {
 
 
     }
+
+    public void code(View v) {
+        Intent intent = new Intent(this, CheckCode.class);
+        startActivity(intent);
+
+
+    }
+
+
 }
 
 
