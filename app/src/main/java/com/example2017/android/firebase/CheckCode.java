@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -86,6 +87,8 @@ public class CheckCode extends AppCompatActivity {
 
     public void but(View v) {
 
+if(!TextUtils.isEmpty(code_edit.getText().toString())){
+// Search for code
   show.addValueEventListener(new ValueEventListener() {
     @Override
     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -117,25 +120,16 @@ public class CheckCode extends AppCompatActivity {
     }
 });
 
+    }else{
+    Toast.makeText(getApplicationContext(),"Enter Your Code",Toast.LENGTH_LONG).show();
+    }
+
+
+
 
     }
 
-public void Check_for_key(final String key){
 
-    show.addListenerForSingleValueEvent(new ValueEventListener() {
-        @Override
-        public void onDataChange(DataSnapshot dataSnapshot) {
-            if (dataSnapshot.hasChild(key)){
-                find=true;
-            }
-        }
-
-        @Override
-        public void onCancelled(DatabaseError databaseError) {
-
-        }
-    });
-}
 
 
     public void retrive_single() {
@@ -157,7 +151,6 @@ public void Check_for_key(final String key){
                 String person5=map.get("person5");
 
                 ShowMessage(data_code,person1,person2,person3,person4,person5);
-                Toast.makeText(getApplicationContext(), data_code , Toast.LENGTH_LONG).show();
             }
 
             @Override
