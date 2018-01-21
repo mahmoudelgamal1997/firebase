@@ -1,32 +1,18 @@
 package com.example2017.android.firebase;
 
-import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.media.MediaPlayer;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
-
 import com.firebase.client.Firebase;
 import com.firebase.ui.database.FirebaseListAdapter;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -41,7 +27,6 @@ public class CheckCode extends AppCompatActivity {
     DatabaseReference check, show;
     EditText code_edit;
     String shop_selected,data_code;
-    boolean find;
     MediaPlayer mediaPlayer;
     AlertDialog.Builder alert;
 
