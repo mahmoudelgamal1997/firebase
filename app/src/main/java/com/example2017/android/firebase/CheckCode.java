@@ -20,17 +20,18 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Calendar;
 import java.util.Map;
 
 public class CheckCode extends AppCompatActivity {
     Spinner spinner;
-    DatabaseReference check, show;
+    DatabaseReference check, show,daily_details;
     EditText code_edit;
     String shop_selected,data_code;
     MediaPlayer mediaPlayer;
     AlertDialog.Builder alert;
-
-
+    AlertDialog alertDialog;
+    int secure=1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,8 +45,7 @@ public class CheckCode extends AppCompatActivity {
         code_edit = (EditText) findViewById(R.id.editText);
         check = FirebaseDatabase.getInstance().getReferenceFromUrl("https://fireapp-7a801.firebaseio.com/CodeValue");
         show = FirebaseDatabase.getInstance().getReference().child("codes");
-               // .child(code_edit.getText().toString().toLowerCase().trim());
-
+        daily_details=FirebaseDatabase.getInstance().getReference().child("details");
         spinner = (Spinner) findViewById(R.id.spinner);
 
 
@@ -149,10 +149,25 @@ if(!TextUtils.isEmpty(code_edit.getText().toString())){
 
 
 
-public void ShowMessage(String message,String person1,String person2,String person3,String person4,String person5){
+public void ShowMessage(final String message, String person1, String person2, String person3, String person4, String person5){
     AlertDialog.Builder builder = new AlertDialog.Builder(this);
     builder.setTitle(code_edit.getText().toString().trim());
+    builder.setPositiveButton("خصم", new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialogInterface, int i)
+        {
 
+            if (secure!=0) {
+                alertDialog.dismiss();
+                discount(data_code, code_edit.getText().toString().toLowerCase().trim());
+                alertDialog.dismiss();
+                secure--;
+            }else {
+                Toast.makeText(getApplicationContext(),"لقد خصمت الان بالفعل لهذا المتجر ",Toast.LENGTH_LONG).show();
+            }
+
+        }
+    });
     String organize_message=shop_selected+" : "+message+"\n" +
             "person1: "+person1+"\n"+
             "person2: "+person2+"\n"+
@@ -161,10 +176,99 @@ public void ShowMessage(String message,String person1,String person2,String pers
             "person5: "+person5+"\n";
 
     builder.setMessage(organize_message);
-    AlertDialog alertDialog = builder.create();
-    alertDialog.show();
-    alertDialog.getWindow().setLayout(1000, 1500); //Controlling width and height.
+     alertDialog= builder.create();
+     alertDialog.show();
+     alertDialog.getWindow().setLayout(1000, 1500); //Controlling width and height.
 
 }
+
+
+    public void discount(String value,String code)
+    {
+
+        int v=Integer.parseInt(value);
+        if (v!=0) {
+            v--;
+            String s = String.valueOf(v);
+            show.child(code).child(shop_selected).setValue(s);
+            mediaPlayer.start();
+            alert.setMessage(" لقد تم الخصم");
+            alert.setCancelable(true);
+            alert.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                          details(shop_selected,code_edit.getText().toString().toLowerCase().trim());
+                }
+            });
+
+            AlertDialog a=alert.create();
+            a.show();
+
+        }
+        else{
+            mediaPlayer.start();
+            alert.setMessage("لا تمتلك نقاط كافيه ");
+            alert.setCancelable(true);
+            alert.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                }
+            });
+
+            AlertDialog a=alert.create();
+            a.show();
+
+        }
+
+
+    }
+
+
+
+    public void details (String value,String code){
+
+
+        daily_details.child(code).child("shop").setValue(value);
+        String b=date_time();
+        daily_details.child(code).child("date").setValue(b);
+
+
+    }
+
+    public String date_time(){
+
+        final Calendar c=Calendar.getInstance();
+        int year=c.get(Calendar.YEAR);
+        int month=c.get(Calendar.MONTH);
+        int day=c.get(Calendar.DAY_OF_MONTH);
+
+        String collection=""+year+"-"+month+1+"-"+day;
+
+        return collection;
+    }
+
+
+//under developemant
+    public void Aler(String title,String message ,String button){
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        builder.setTitle(title)
+        .setMessage(message)
+        .setPositiveButton(button, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        }) ;
+
+
+
+
+
+    }
+
+
+
+
 
 }

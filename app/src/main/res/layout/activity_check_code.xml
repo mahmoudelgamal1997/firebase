@@ -68,7 +68,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_below="@+id/spinner"
-    android:text="ok"
+    android:text="استعلام"
     android:id="@+id/bb"
     android:onClick="but"
     android:layout_marginLeft="140dp"
