@@ -45,7 +45,7 @@ public class CheckCode extends AppCompatActivity {
         code_edit = (EditText) findViewById(R.id.editText);
         check = FirebaseDatabase.getInstance().getReferenceFromUrl("https://fireapp-7a801.firebaseio.com/CodeValue");
         show = FirebaseDatabase.getInstance().getReference().child("codes");
-        daily_details=FirebaseDatabase.getInstance().getReference().child("details");
+        daily_details=FirebaseDatabase.getInstance().getReference().child("details").push();
         spinner = (Spinner) findViewById(R.id.spinner);
 
 
@@ -69,6 +69,19 @@ public class CheckCode extends AppCompatActivity {
 
 
     }
+
+
+
+
+
+    public void new_but(View v){
+
+        code_edit.getText().clear();
+        secure++;
+    }
+
+
+
 
     public void but(View v) {
 
@@ -156,15 +169,10 @@ public void ShowMessage(final String message, String person1, String person2, St
         @Override
         public void onClick(DialogInterface dialogInterface, int i)
         {
-
-            if (secure!=0) {
+        //to avoid multi press in button and discount reduntant points
                 alertDialog.dismiss();
                 discount(data_code, code_edit.getText().toString().toLowerCase().trim());
-                alertDialog.dismiss();
-                secure--;
-            }else {
-                Toast.makeText(getApplicationContext(),"لقد خصمت الان بالفعل لهذا المتجر ",Toast.LENGTH_LONG).show();
-            }
+
 
         }
     });
@@ -185,7 +193,6 @@ public void ShowMessage(final String message, String person1, String person2, St
 
     public void discount(String value,String code)
     {
-
         int v=Integer.parseInt(value);
         if (v!=0) {
             v--;
@@ -193,7 +200,7 @@ public void ShowMessage(final String message, String person1, String person2, St
             show.child(code).child(shop_selected).setValue(s);
             mediaPlayer.start();
             alert.setMessage(" لقد تم الخصم");
-            alert.setCancelable(true);
+            alert.setCancelable(false);
             alert.setPositiveButton("ok", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
@@ -229,9 +236,10 @@ public void ShowMessage(final String message, String person1, String person2, St
     public void details (String value,String code){
 
 
-        daily_details.child(code).child("shop").setValue(value);
+        daily_details.child("shop").setValue(value);
+        daily_details.child("code").setValue(code);
         String b=date_time();
-        daily_details.child(code).child("date").setValue(b);
+        daily_details.child("date").setValue(b);
 
 
     }
@@ -243,7 +251,11 @@ public void ShowMessage(final String message, String person1, String person2, St
         int month=c.get(Calendar.MONTH);
         int day=c.get(Calendar.DAY_OF_MONTH);
 
-        String collection=""+year+"-"+month+1+"-"+day;
+        int hour=c.get(Calendar.HOUR_OF_DAY);
+        int minute=c.get(Calendar.MINUTE);
+
+
+        String collection=""+year+"-"+month+1+"-"+day +"   "+hour+":"+minute;
 
         return collection;
     }
