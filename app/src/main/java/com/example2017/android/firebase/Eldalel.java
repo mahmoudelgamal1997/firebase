@@ -1,6 +1,8 @@
 package com.example2017.android.firebase;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -24,9 +26,8 @@ import com.squareup.picasso.Picasso;
 
 public class Eldalel extends AppCompatActivity {
     RecyclerView mre;
-    private StorageReference s;
     private DatabaseReference mdatabase;
-
+    SharedPreferences sh;
 
 
     @Override
@@ -38,7 +39,6 @@ public class Eldalel extends AppCompatActivity {
 
 
         mdatabase = FirebaseDatabase.getInstance().getReference().child("City");
-        s = FirebaseStorage.getInstance().getReference();
         mdatabase.keepSynced(true);
 
 
@@ -49,6 +49,7 @@ public class Eldalel extends AppCompatActivity {
 
 
 
+        Retrive();
 
     }
 
@@ -59,7 +60,6 @@ public class Eldalel extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        Retrive();
     }
 
 
@@ -82,10 +82,26 @@ public class Eldalel extends AppCompatActivity {
 
         {
             @Override
-            protected void populateViewHolder(Post_viewholder viewHolder, Posts model, int position) {
+            protected void populateViewHolder(Post_viewholder viewHolder, final Posts model, int position) {
 
                 viewHolder.SetTitle((model.getTitle()));
                 viewHolder.SetImage(getApplicationContext(),model.getImg());
+
+                viewHolder.view.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        sh=getSharedPreferences("plz",Context.MODE_PRIVATE );
+                        SharedPreferences.Editor  mydata=sh.edit();
+                        mydata.putString( "data_city",model.getTitle() );
+                        mydata.commit();
+
+                        Intent intent=new Intent(getApplicationContext(),Catorgy.class);
+                        startActivity(intent);
+
+
+                    }
+                });
+
 
             }
         };

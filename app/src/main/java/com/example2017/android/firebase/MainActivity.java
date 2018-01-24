@@ -25,14 +25,8 @@ public void start(View v) {
     Intent intent = new Intent(this, Eldalel.class);
     startActivity(intent);
 
-
 }
-    public void cat(View v) {
-        Intent intent = new Intent(this, Catorgy.class);
-        startActivity(intent);
 
-
-    }
 
     public void code(View v) {
         Intent intent = new Intent(this, CheckCode.class);

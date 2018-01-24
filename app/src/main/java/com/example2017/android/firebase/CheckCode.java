@@ -1,6 +1,7 @@
 package com.example2017.android.firebase;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -163,6 +164,7 @@ if(!TextUtils.isEmpty(code_edit.getText().toString())){
 
 
 public void ShowMessage(final String message, String person1, String person2, String person3, String person4, String person5){
+
     AlertDialog.Builder builder = new AlertDialog.Builder(this);
     builder.setTitle(code_edit.getText().toString().trim());
     builder.setPositiveButton("خصم", new DialogInterface.OnClickListener() {
@@ -170,9 +172,10 @@ public void ShowMessage(final String message, String person1, String person2, St
         public void onClick(DialogInterface dialogInterface, int i)
         {
         //to avoid multi press in button and discount reduntant points
-                alertDialog.dismiss();
-                discount(data_code, code_edit.getText().toString().toLowerCase().trim());
 
+                 discount(data_code, code_edit.getText().toString().toLowerCase().trim());
+                 details(shop_selected, code_edit.getText().toString().toLowerCase().trim());
+                 alertDialog.dismiss();
 
         }
     });
@@ -193,6 +196,9 @@ public void ShowMessage(final String message, String person1, String person2, St
 
     public void discount(String value,String code)
     {
+        //to find the balance of the code
+        // if equals zero
+        //no operation will be done
         int v=Integer.parseInt(value);
         if (v!=0) {
             v--;
@@ -203,8 +209,9 @@ public void ShowMessage(final String message, String person1, String person2, St
             alert.setCancelable(false);
             alert.setPositiveButton("ok", new DialogInterface.OnClickListener() {
                 @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                          details(shop_selected,code_edit.getText().toString().toLowerCase().trim());
+                public void onClick(DialogInterface dialogInterface, int i)
+                {
+
                 }
             });
 

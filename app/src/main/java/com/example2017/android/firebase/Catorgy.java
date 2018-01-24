@@ -1,10 +1,13 @@
 package com.example2017.android.firebase;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -23,6 +26,7 @@ public class Catorgy extends AppCompatActivity {
     RecyclerView mre;
     private StorageReference s;
     private DatabaseReference mdatabase;
+    SharedPreferences sh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +45,10 @@ public class Catorgy extends AppCompatActivity {
         mre.setHasFixedSize(true);
         mre.setLayoutManager(new LinearLayoutManager(this));
 
-
+        Retrive();
 
 
     }
-
 
 
 
@@ -53,7 +56,6 @@ public class Catorgy extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        Retrive();
     }
 
 
@@ -75,11 +77,26 @@ public class Catorgy extends AppCompatActivity {
 
         ) {
             @Override
-            protected void populateViewHolder(Post_viewholder viewHolder, Posts model, int position) {
+            protected void populateViewHolder(Post_viewholder viewHolder, final Posts model, int position) {
 
                 viewHolder.SetTitle((model.getCatorgy_name()));
                 viewHolder.SetImage(getApplicationContext(),model.getCatorgy_image());
-             //   Toast.makeText(getApplicationContext(),model.getCatorgy_name(),Toast.LENGTH_LONG);
+
+
+          viewHolder.view.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View view) {
+
+                  sh=getSharedPreferences("plz",Context.MODE_PRIVATE );
+                  SharedPreferences.Editor  mydata=sh.edit();
+                  mydata.putString( "data_catorgy",model.getCatorgy_name() );
+                  mydata.commit();
+
+                  Intent intent=new Intent(getApplicationContext(),Shop.class);
+                  startActivity(intent);
+              }
+          });
+
 
             }
         };
@@ -93,11 +110,10 @@ public class Catorgy extends AppCompatActivity {
 
         View view;
 
-        public Post_viewholder(View itemView) {
+        public Post_viewholder(final View itemView) {
             super(itemView);
 
             view = itemView;
-
 
         }
 
