@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example2017.android.firebase.MainActivity"
-    android:background="@drawable/mainbackground">
+    android:background="@drawable/main">
 
   <Button
       android:layout_width="wrap_content"
@@ -18,7 +18,7 @@
       android:textColor="#FFFFFFFF"
       android:id="@+id/button4"
       android:onClick="start"
-      android:background="@drawable/backbutton"
+      android:background="@drawable/edittext"
       android:layout_alignParentBottom="true"
       android:layout_centerHorizontal="true"
       android:layout_marginBottom="100dp" />
@@ -32,7 +32,7 @@
       android:textColor="#FFFFFFFF"
       android:id="@+id/button3"
       android:onClick="code"
-      android:background="@drawable/backbutton"
+      android:background="@drawable/butt"
       android:layout_alignParentBottom="true"
       android:layout_centerHorizontal="true"
       android:layout_marginBottom="161dp" />

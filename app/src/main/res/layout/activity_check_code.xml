@@ -7,7 +7,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example2017.android.firebase.CheckCode">
+    tools:context="com.example2017.android.firebase.CheckCode"
+    android:background="@drawable/main">
 
     <ImageView
         android:layout_width="match_parent"
@@ -15,7 +16,7 @@
         android:id="@+id/imageView2"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:background="@drawable/icon" />
+         />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,7 +25,7 @@
         android:textColor="#E91E63"
         android:id="@+id/textView4"
         android:layout_below="@+id/imageView2"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:layout_alignParentStart="true" />
 
     <EditText
@@ -36,7 +37,7 @@
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/imageView2"
         android:layout_marginTop="30dp"
-        />
+        android:background="@drawable/edittext" />
 
 
 
@@ -48,6 +49,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="  select the shop"
         android:textSize="20dp"
+        android:textColor="#E91E63"
         android:id="@+id/textView2"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/editText"
@@ -62,7 +64,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
 
-        />
+        android:background="@drawable/edittext" />
 
     <Button
     android:layout_width="wrap_content"
@@ -71,32 +73,18 @@
     android:text="استعلام"
     android:id="@+id/bb"
     android:onClick="but"
-    android:layout_marginLeft="220dp"
+    android:layout_marginLeft="110dp"
     android:layout_marginTop="60dp"
     android:textColor="#FFFFFF"
-    android:background="#2196F3"
+    android:background="@drawable/mm"
     />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/spinner"
-        android:text="استعلام جديد"
-        android:id="@+id/another"
-        android:onClick="new_but"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="60dp"
-        android:textColor="#FFFFFF"
-        android:background="#2196F3"
-        />
-
 
 
 <RelativeLayout
     android:layout_width="wrap_content"
     android:layout_height="100dp"
     android:layout_below="@id/bb"
-    >
+    android:id="@+id/relativeLayout">
 
 </RelativeLayout>
 

@@ -33,6 +33,7 @@ public class CheckCode extends AppCompatActivity {
     AlertDialog.Builder alert;
     AlertDialog alertDialog;
     int secure=1;
+    int x=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,6 +86,9 @@ public class CheckCode extends AppCompatActivity {
 
 
     public void but(View v) {
+
+     //to prevent dialog from appear more
+     x=0;
 
 if(!TextUtils.isEmpty(code_edit.getText().toString())){
 // Search for code
@@ -148,9 +152,22 @@ if(!TextUtils.isEmpty(code_edit.getText().toString())){
                 String person3=map.get("person3");
                 String person4=map.get("person4");
                 String person5=map.get("person5");
+                String phone=map.get("phone");
 
-                ShowMessage(data_code,person1,person2,person3,person4,person5);
-            }
+
+
+                if (x==0)
+                    {
+                        ShowMessage(data_code, person1, person2, person3, person4, person5,phone);
+
+                    }
+
+x++;
+
+
+
+                }
+
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -163,7 +180,7 @@ if(!TextUtils.isEmpty(code_edit.getText().toString())){
 
 
 
-public void ShowMessage(final String message, String person1, String person2, String person3, String person4, String person5){
+public void ShowMessage(final String message, String person1, String person2, String person3, String person4, String person5,String number){
 
     AlertDialog.Builder builder = new AlertDialog.Builder(this);
     builder.setTitle(code_edit.getText().toString().trim());
@@ -184,13 +201,13 @@ public void ShowMessage(final String message, String person1, String person2, St
             "person2: "+person2+"\n"+
             "person3: "+person3+"\n"+
             "person4: "+person4+"\n"+
-            "person5: "+person5+"\n";
+            "person5: "+person5+"\n"+
+            "phone number : "+ number +"\n";
 
     builder.setMessage(organize_message);
      alertDialog= builder.create();
      alertDialog.show();
      alertDialog.getWindow().setLayout(1000, 1500); //Controlling width and height.
-
 }
 
 
