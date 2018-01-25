@@ -1,12 +1,16 @@
 package com.example2017.android.firebase;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.firebase.client.Firebase;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
@@ -40,6 +44,8 @@ public class Shop extends AppCompatActivity {
 
         retrieve(shop);
 
+
+
     }
 
 
@@ -57,9 +63,25 @@ private void retrieve(DatabaseReference data){
 
     ) {
         @Override
-        protected void populateViewHolder(Post_shop_viewholder viewHolder, Posts model, int position) {
+        protected void populateViewHolder(Post_shop_viewholder viewHolder, final Posts model, int position) {
             viewHolder.SetTitle(model.getCatorgy_name());
             viewHolder.SetImage(getApplicationContext(),model.getCatorgy_image());
+
+            viewHolder.view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                   // Toast.makeText(getApplicationContext(),model.getCatorgy_name(),Toast.LENGTH_LONG).show();
+                    sh=getSharedPreferences("plz",Context.MODE_PRIVATE );
+                    SharedPreferences.Editor  mydata=sh.edit();
+                    mydata.putString( "data_shop",model.getCatorgy_name() );
+                    mydata.commit();
+
+                    Intent intent=new Intent(getApplicationContext(),shop_details.class);
+                    startActivity(intent);
+
+
+                }
+            });
         }
     };
 
@@ -96,5 +118,7 @@ recyclerView.setAdapter(firebaseRecyclerAdapter);
         }
 
     }
+
+
 
 }

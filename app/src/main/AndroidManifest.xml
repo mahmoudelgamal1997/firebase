@@ -24,7 +24,8 @@
         <activity android:name=".Eldalel" />
         <activity android:name=".Catorgy" />
         <activity android:name=".CheckCode" />
-        <activity android:name=".Shop"></activity>
+        <activity android:name=".Shop" />
+        <activity android:name=".shop_details"></activity>
     </application>
 
 </manifest>
