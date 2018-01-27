@@ -83,7 +83,7 @@ def.addValueEventListener(new ValueEventListener() {
 
 
         ImageView imgview = (ImageView)findViewById(R.id.imageView3);
-        Picasso.with(cnt).load(img).into(imgview);
+        Picasso.with(cnt).load(img).placeholder(R.drawable.progress).into(imgview);
     }
 
 

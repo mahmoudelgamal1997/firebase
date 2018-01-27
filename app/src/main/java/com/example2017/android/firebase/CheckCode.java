@@ -1,13 +1,13 @@
 package com.example2017.android.firebase;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.media.MediaPlayer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -32,14 +32,15 @@ public class CheckCode extends AppCompatActivity {
     MediaPlayer mediaPlayer;
     AlertDialog.Builder alert;
     AlertDialog alertDialog;
-    int secure=1;
-    int x=0;
+    int avoidAlertDialogmutltiappear=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_code);
         Firebase.setAndroidContext(this);
 
+        //to avoid keyboard from automatic appear
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         alert=new AlertDialog.Builder(this);
         mediaPlayer = MediaPlayer.create(this,R.raw.notify);
@@ -76,10 +77,9 @@ public class CheckCode extends AppCompatActivity {
 
 
 
-    public void new_but(View v){
-
+    public void new_but(View v)
+    {
         code_edit.getText().clear();
-        secure++;
     }
 
 
@@ -88,7 +88,7 @@ public class CheckCode extends AppCompatActivity {
     public void but(View v) {
 
      //to prevent dialog from appear more
-     x=0;
+        avoidAlertDialogmutltiappear=0;
 
 if(!TextUtils.isEmpty(code_edit.getText().toString())){
 // Search for code
@@ -156,13 +156,13 @@ if(!TextUtils.isEmpty(code_edit.getText().toString())){
 
 
 
-                if (x==0)
+                if (avoidAlertDialogmutltiappear==0)
                     {
                         ShowMessage(data_code, person1, person2, person3, person4, person5,phone);
 
                     }
 
-x++;
+                avoidAlertDialogmutltiappear++;
 
 
 
@@ -286,7 +286,7 @@ public void ShowMessage(final String message, String person1, String person2, St
 
 
 //under developemant
-    public void Aler(String title,String message ,String button){
+    public void Alert(String title,String message ,String button){
         AlertDialog.Builder builder=new AlertDialog.Builder(this);
         builder.setTitle(title)
         .setMessage(message)

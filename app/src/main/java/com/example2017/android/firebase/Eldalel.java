@@ -86,7 +86,6 @@ public class Eldalel extends AppCompatActivity {
 
                 viewHolder.SetTitle((model.getTitle()));
                 viewHolder.SetImage(getApplicationContext(),model.getImg());
-
                 viewHolder.view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -133,7 +132,7 @@ public class Eldalel extends AppCompatActivity {
         public void SetImage(final Context cnt, final String img) {
 
             final ImageView imgview = (ImageView) view.findViewById(R.id.imageView);
-            Picasso.with(cnt).load(img).networkPolicy(NetworkPolicy.OFFLINE).into(imgview, new Callback() {
+            Picasso.with(cnt).load(img).placeholder(R.drawable.progress).networkPolicy(NetworkPolicy.OFFLINE).into(imgview, new Callback() {
                 @Override
                 public void onSuccess() {
 

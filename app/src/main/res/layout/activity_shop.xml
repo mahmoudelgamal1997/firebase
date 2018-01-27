@@ -10,9 +10,18 @@
     tools:context="com.example2017.android.firebase.MainActivity"
     android:background="#cecdcd">
 
+
+
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/view3"
         android:background="#cecdcd" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/customText"
+        android:textSize="40dp"
+        />
+
 </RelativeLayout>

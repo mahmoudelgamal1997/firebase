@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/relative1"
     tools:context="com.example2017.android.firebase.shop_details">
 
     <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
 
         <ImageView
             android:layout_width="match_parent"
@@ -22,19 +28,20 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Large Text"
+            android:fontFamily="@string/common_google_play_services_notification_ticker"
             android:textSize="40dp"
             android:id="@+id/title_text"
             android:layout_row="1"
             android:layout_column="1"
             android:layout_gravity="center_horizontal"
-            android:textColor="#5e83f1" />
+            android:textColor="#000000" />
 
         <ImageView
             android:layout_width="40dp"
             android:layout_height="30dp"
             android:id="@+id/imageView4"
             android:scaleType="fitXY"
-            android:background="@drawable/homeicon"
+            android:background="@drawable/phone"
             android:layout_marginTop="33dp"
             android:layout_marginLeft="5dp"
             android:layout_row="3"
@@ -45,6 +52,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Medium Text"
+
             android:textSize="25dp"
             android:id="@+id/details_text"
             android:layout_marginTop="30dp"
@@ -95,15 +103,27 @@
 
 
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:id="@+id/imageView6"
             android:scaleType="fitXY"
-            android:background="@drawable/mobileicon"
-            android:layout_marginTop="33dp"
+            android:background="@drawable/iphone"
+            android:layout_marginTop="27dp"
             android:layout_marginLeft="5dp"
             android:layout_column="1" />
 
 
+
     </GridLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="700dp"
+        android:id="@+id/relativeLayout">
+
+    </RelativeLayout>
 </RelativeLayout>
+
+
+
+</ScrollView>

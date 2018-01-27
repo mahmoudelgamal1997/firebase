@@ -7,24 +7,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.firebase.client.Firebase;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 public class Catorgy extends AppCompatActivity {
 
     RecyclerView mre;
-    private StorageReference s;
     private DatabaseReference mdatabase;
     SharedPreferences sh;
 
@@ -37,7 +31,6 @@ public class Catorgy extends AppCompatActivity {
 
 
         mdatabase = FirebaseDatabase.getInstance().getReference().child("catorgy");
-        s = FirebaseStorage.getInstance().getReference();
         mdatabase.keepSynced(true);
 
 
@@ -127,7 +120,7 @@ public class Catorgy extends AppCompatActivity {
         public void SetImage(Context cnt, String img) {
 
             ImageView imgview = (ImageView) view.findViewById(R.id.imageView);
-            Picasso.with(cnt).load(img).into(imgview);
+            Picasso.with(cnt).load(img).placeholder(R.drawable.progress).into(imgview);
         }
 
 
