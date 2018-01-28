@@ -56,7 +56,8 @@ public class Shop extends AppCompatActivity {
 
         if (dataSnapshot.getChildrenCount()==0){
 
-          CustomAppearText.setText("No Item To Appear");
+          CustomAppearText.setText("No Item To Appear\n "+"(لا يوجد بيانات)");
+
         }
 
     }

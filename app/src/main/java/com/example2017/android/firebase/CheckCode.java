@@ -27,11 +27,12 @@ import java.util.Map;
 public class CheckCode extends AppCompatActivity {
     Spinner spinner;
     DatabaseReference check, show,daily_details;
-    EditText code_edit;
+    EditText code_edit,code_edit1,code_edit2,code_edit3,code_edit4,code_edit5,code_edit6;
     String shop_selected,data_code;
     MediaPlayer mediaPlayer;
     AlertDialog.Builder alert;
     AlertDialog alertDialog;
+    String codeCollection;
     int avoidAlertDialogmutltiappear=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +46,26 @@ public class CheckCode extends AppCompatActivity {
         alert=new AlertDialog.Builder(this);
         mediaPlayer = MediaPlayer.create(this,R.raw.notify);
 
-        code_edit = (EditText) findViewById(R.id.editText);
+        code_edit = (EditText) findViewById(R.id.editText10);
+
+
+        code_edit1 = (EditText) findViewById(R.id.editText10);
+        code_edit2 = (EditText) findViewById(R.id.editText11);
+        code_edit3 = (EditText) findViewById(R.id.editText12);
+        code_edit4 = (EditText) findViewById(R.id.editText13);
+        code_edit5 = (EditText) findViewById(R.id.editText14);
+        code_edit6 = (EditText) findViewById(R.id.editText15);
+
+         codeCollection=code_edit1.getText().toString().toLowerCase().trim()+
+                code_edit2.getText().toString().toLowerCase().trim()+
+                code_edit3.getText().toString().toLowerCase().trim()+
+                code_edit4.getText().toString().toLowerCase().toString().trim()+
+                code_edit5.getText().toString().toLowerCase().toString().trim()+
+                code_edit6.getText().toString().toLowerCase().toString().trim();
+
+
+     //   Toast.makeText(getApplicationContext(),codeCollection,Toast.LENGTH_LONG).show();
+
         check = FirebaseDatabase.getInstance().getReferenceFromUrl("https://fireapp-7a801.firebaseio.com/CodeValue");
         show = FirebaseDatabase.getInstance().getReference().child("codes");
         daily_details=FirebaseDatabase.getInstance().getReference().child("details").push();
@@ -77,10 +97,6 @@ public class CheckCode extends AppCompatActivity {
 
 
 
-    public void new_but(View v)
-    {
-        code_edit.getText().clear();
-    }
 
 
 
@@ -90,12 +106,21 @@ public class CheckCode extends AppCompatActivity {
      //to prevent dialog from appear more
         avoidAlertDialogmutltiappear=0;
 
-if(!TextUtils.isEmpty(code_edit.getText().toString())){
+       //to collect all codes in one string
+        codeCollection=code_edit1.getText().toString().toLowerCase().trim()+
+                code_edit2.getText().toString().toLowerCase().trim()+
+                code_edit3.getText().toString().toLowerCase().trim()+
+                code_edit4.getText().toString().toLowerCase().toString().trim()+
+                code_edit5.getText().toString().toLowerCase().toString().trim()+
+                code_edit6.getText().toString().toLowerCase().toString().trim();
+
+
+        if(!TextUtils.isEmpty(codeCollection.toString())){
 // Search for code
   show.addValueEventListener(new ValueEventListener() {
     @Override
     public void onDataChange(DataSnapshot dataSnapshot) {
-        if (dataSnapshot.hasChild(code_edit.getText().toString().toLowerCase().trim()))
+        if (dataSnapshot.hasChild(codeCollection.toString().toLowerCase().trim()))
         {
             retrive_single();
 
@@ -138,7 +163,7 @@ if(!TextUtils.isEmpty(code_edit.getText().toString())){
     public void retrive_single() {
 
 
-        show.child(code_edit.getText().toString().toLowerCase().trim()).addValueEventListener(new ValueEventListener() {
+        show.child(codeCollection.toString().toLowerCase().trim()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -183,15 +208,15 @@ if(!TextUtils.isEmpty(code_edit.getText().toString())){
 public void ShowMessage(final String message, String person1, String person2, String person3, String person4, String person5,String number){
 
     AlertDialog.Builder builder = new AlertDialog.Builder(this);
-    builder.setTitle(code_edit.getText().toString().trim());
+    builder.setTitle(codeCollection.trim());
     builder.setPositiveButton("خصم", new DialogInterface.OnClickListener() {
         @Override
         public void onClick(DialogInterface dialogInterface, int i)
         {
         //to avoid multi press in button and discount reduntant points
 
-                 discount(data_code, code_edit.getText().toString().toLowerCase().trim());
-                 details(shop_selected, code_edit.getText().toString().toLowerCase().trim());
+                 discount(data_code,codeCollection.toString().toLowerCase().trim());
+                 details(shop_selected,codeCollection.toString().toLowerCase().trim());
                  alertDialog.dismiss();
 
         }
