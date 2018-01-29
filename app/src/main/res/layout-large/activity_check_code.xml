@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="800dp" >
+    android:layout_height="match_parent" >
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="wrap_content"
     tools:context="com.example2017.android.firebase.CheckCode"
     android:background="@drawable/main"
     android:paddingLeft="4dp"
@@ -14,7 +14,7 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="400dp"
         android:id="@+id/imageView2"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
@@ -22,7 +22,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textSize="50dp"
         android:text=" Enter Your Code "
         android:textColor="#E91E63"
         android:id="@+id/textView4"
@@ -34,8 +34,8 @@
 
 
     <EditText
-        android:layout_width="50dp"
-        android:layout_height="60dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:background="#FFFFFF"
         android:id="@+id/editText10"
         android:maxLength="1"
@@ -43,86 +43,87 @@
         android:textSize="25dp"
         android:imeOptions="actionNext"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/imageView2"
+        android:layout_below="@+id/textView4"
+        android:layout_marginTop="10dp"
+
         android:layout_marginLeft="6dp"
-        android:layout_marginTop="30dp"
         />
 
     <EditText
-        android:layout_width="50dp"
-        android:layout_height="60dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:background="#FFFFFF"
         android:paddingLeft="15dp"
         android:textSize="25dp"
         android:maxLength="1"
         android:id="@+id/editText11"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/imageView2"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="64dp"
+        android:layout_below="@+id/textView4"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="94dp"
 
         />
 
     <EditText
-    android:layout_width="50dp"
-    android:layout_height="60dp"
+    android:layout_width="80dp"
+    android:layout_height="80dp"
     android:background="#FFFFFF"
         android:paddingLeft="15dp"
         android:textSize="25dp"
     android:id="@+id/editText12"
     android:maxLength="1"
     android:layout_alignParentStart="true"
-    android:layout_below="@+id/imageView2"
-    android:layout_marginTop="30dp"
-    android:layout_marginLeft="124dp"
+        android:layout_below="@+id/textView4"
+        android:layout_marginTop="10dp"
+    android:layout_marginLeft="180dp"
 
         />
 
 
     <EditText
-    android:layout_width="50dp"
-    android:layout_height="60dp"
+    android:layout_width="85dp"
+    android:layout_height="80dp"
     android:background="#FFFFFF"
         android:paddingLeft="15dp"
         android:textSize="25dp"
     android:maxLength="1"
     android:id="@+id/editText13"
     android:layout_alignParentStart="true"
-    android:layout_below="@+id/imageView2"
-    android:layout_marginTop="30dp"
-    android:layout_marginLeft="184dp"
+        android:layout_below="@+id/textView4"
+        android:layout_marginTop="10dp"
+    android:layout_marginLeft="267dp"
 
         />
 
 
     <EditText
-    android:layout_width="50dp"
-    android:layout_height="60dp"
+    android:layout_width="85dp"
+    android:layout_height="80dp"
     android:id="@+id/editText14"
         android:paddingLeft="15dp"
         android:textSize="25dp"
     android:maxLength="1"
     android:background="#FFFFFF"
     android:layout_alignParentStart="true"
-    android:layout_below="@+id/imageView2"
-    android:layout_marginTop="30dp"
-    android:layout_marginLeft="244dp"
+        android:layout_below="@+id/textView4"
+        android:layout_marginTop="10dp"
+    android:layout_marginLeft="363dp"
 
         />
 
 
     <EditText
-    android:layout_width="50dp"
-    android:layout_height="60dp"
+    android:layout_width="85dp"
+    android:layout_height="80dp"
     android:id="@+id/editText15"
     android:paddingLeft="15dp"
     android:textSize="25dp"
     android:maxLength="1"
     android:background="#FFFFFF"
     android:layout_alignParentStart="true"
-    android:layout_below="@+id/imageView2"
-    android:layout_marginTop="30dp"
-    android:layout_marginLeft="300dp"
+        android:layout_below="@+id/textView4"
+        android:layout_marginTop="10dp"
+    android:layout_marginLeft="460dp"
 
         />
 
@@ -135,7 +136,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="  select the shop"
-        android:textSize="20dp"
+        android:textSize="50dp"
         android:textColor="#E91E63"
         android:id="@+id/textView2"
         android:layout_alignParentStart="true"
@@ -145,7 +146,7 @@
         />
     <Spinner
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="90dp"
         android:id="@+id/spinner"
         android:layout_below="@+id/textView2"
         android:layout_centerHorizontal="true"
@@ -160,7 +161,7 @@
     android:text="استعلام"
     android:id="@+id/bb"
     android:onClick="but"
-    android:layout_marginLeft="100dp"
+    android:layout_marginLeft="170dp"
     android:layout_marginTop="60dp"
     android:textColor="#FFFFFF"
     android:background="@drawable/mm"
