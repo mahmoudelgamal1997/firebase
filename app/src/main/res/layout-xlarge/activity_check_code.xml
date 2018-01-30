@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        tools:context="com.example2017.android.firebase.CheckCode"
+        android:background="@drawable/main"
+        >
+
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_200sdp"
+            android:id="@+id/imageView2"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text=" Enter Your Code "
+            android:textSize="@dimen/_25sdp"
+            android:textColor="#E91E63"
+            android:id="@+id/textView4"
+            android:layout_below="@+id/imageView2"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_alignParentStart="true" />
+
+
+
+
+        <EditText
+            android:layout_width="@dimen/_47sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:background="#FFFFFF"
+            android:id="@+id/editText10"
+            android:maxLength="1"
+            android:paddingLeft="@dimen/_15sdp"
+            android:textSize="@dimen/_25sdp"
+            android:imeOptions="actionNext"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView4"
+            android:layout_marginLeft="@dimen/_6sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            />
+
+        <EditText
+            android:layout_width="@dimen/_47sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:background="#FFFFFF"
+            android:paddingLeft="@dimen/_15sdp"
+            android:textSize="@dimen/_25sdp"
+            android:maxLength="1"
+            android:id="@+id/editText11"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView4"
+            android:layout_marginLeft="@dimen/_55sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+
+            />
+
+        <EditText
+            android:layout_width="@dimen/_47sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:background="#FFFFFF"
+            android:paddingLeft="15dp"
+            android:textSize="25dp"
+            android:id="@+id/editText12"
+            android:maxLength="1"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView4"
+            android:layout_marginLeft="@dimen/_104sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+
+            />
+
+
+        <EditText
+            android:layout_width="@dimen/_47sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:background="#FFFFFF"
+            android:paddingLeft="15dp"
+            android:textSize="25dp"
+            android:maxLength="1"
+            android:id="@+id/editText13"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView4"
+            android:layout_marginLeft="@dimen/_154sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            />
+
+
+        <EditText
+            android:layout_width="@dimen/_47sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:id="@+id/editText14"
+            android:paddingLeft="15dp"
+            android:textSize="25dp"
+            android:maxLength="1"
+            android:background="#FFFFFF"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView4"
+            android:layout_marginLeft="@dimen/_203sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+
+            />
+
+
+        <EditText
+            android:layout_width="@dimen/_47sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:id="@+id/editText15"
+            android:paddingLeft="15dp"
+            android:textSize="25dp"
+            android:maxLength="1"
+            android:background="#FFFFFF"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView4"
+            android:layout_marginLeft="@dimen/_252sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+
+            />
+
+
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="  select the shop"
+            android:textSize="@dimen/_30sdp"
+            android:textColor="#E91E63"
+            android:id="@+id/textView2"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/editText10"
+            android:layout_marginTop="@dimen/_40sdp"
+
+            />
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_60sdp"
+            android:id="@+id/spinner"
+            android:layout_below="@+id/textView2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/edittext" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/spinner"
+            android:text="استعلام"
+            android:id="@+id/bb"
+            android:onClick="but"
+            android:layout_marginLeft="@dimen/_85sdp"
+            android:layout_marginTop="@dimen/_60sdp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/mm"
+            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_200sdp"
+            android:layout_below="@+id/bb"
+            >
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</ScrollView>
