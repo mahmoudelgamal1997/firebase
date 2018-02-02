@@ -41,17 +41,6 @@ public void start(View v) {
 
 
 
-/*
-        Posts post1=new Posts();
-        post1.setTitle("mahmoud");
-        m.push().setValue(post1);
-
-        Posts post2=new Posts();
-        post2.setTitle("elgamal");
-        m.push().setValue(post2);
-
-*/
-
 
 
 

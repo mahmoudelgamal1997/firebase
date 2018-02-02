@@ -2,7 +2,7 @@
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="wrap_content" >
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -112,15 +112,46 @@
             android:layout_marginLeft="5dp"
             android:layout_column="1" />
 
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/imageView7"
+            android:scaleType="fitXY"
+            android:background="@drawable/facebook"
+            android:layout_marginTop="27dp"
+            android:layout_marginLeft="70dp"
+            android:layout_column="1"
+            android:layout_row="6"
+            />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/imageView8"
+            android:scaleType="fitXY"
+            android:background="@drawable/twitter"
+            android:layout_marginTop="27dp"
+            android:layout_marginLeft="70dp"
+            android:layout_column="1"
+            android:layout_row="7"
+            />
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/imageView9"
+            android:scaleType="fitXY"
+            android:background="@drawable/instagram"
+            android:layout_marginTop="27dp"
+            android:layout_marginLeft="70dp"
+            android:layout_column="1"
+            android:layout_row="8"
+            />
+
+
+
+
 
 
     </GridLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="700dp"
-        android:id="@+id/relativeLayout">
-
-    </RelativeLayout>
 </RelativeLayout>
 </ScrollView>

@@ -33,10 +33,6 @@
             android:layout_below="@+id/imageView2"
             android:layout_marginTop="@dimen/_12sdp"
             android:layout_alignParentStart="true" />
-
-
-
-
         <EditText
             android:layout_width="@dimen/_47sdp"
             android:layout_height="@dimen/_60sdp"

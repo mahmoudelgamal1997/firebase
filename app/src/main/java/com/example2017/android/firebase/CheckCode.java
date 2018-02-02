@@ -178,12 +178,13 @@ public class CheckCode extends AppCompatActivity {
                 String person4=map.get("person4");
                 String person5=map.get("person5");
                 String phone=map.get("phone");
+                String adress=map.get("adress");
 
 
 
                 if (avoidAlertDialogmutltiappear==0)
                     {
-                        ShowMessage(data_code, person1, person2, person3, person4, person5,phone);
+                        ShowMessage(data_code, person1, person2, person3, person4, person5,phone,adress);
 
                     }
 
@@ -205,7 +206,7 @@ public class CheckCode extends AppCompatActivity {
 
 
 
-public void ShowMessage(final String message, String person1, String person2, String person3, String person4, String person5,String number){
+public void ShowMessage(final String message, String person1, String person2, String person3, String person4, String person5,String number,String adress){
 
     AlertDialog.Builder builder = new AlertDialog.Builder(this);
     builder.setTitle(codeCollection.trim());
@@ -227,7 +228,10 @@ public void ShowMessage(final String message, String person1, String person2, St
             "person3: "+person3+"\n"+
             "person4: "+person4+"\n"+
             "person5: "+person5+"\n"+
-            "phone number : "+ number +"\n";
+            "phone number : "+ number +"\n"+
+            "adress : "+adress+"\n";
+
+            ;
 
     builder.setMessage(organize_message);
      alertDialog= builder.create();
