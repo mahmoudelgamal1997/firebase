@@ -27,7 +27,7 @@ import java.util.Map;
 public class shop_details extends AppCompatActivity {
     TextView title,home,number,details;
     SharedPreferences sh;
-    DatabaseReference def;
+    DatabaseReference def,calc;
     ImageView imageView,imageViewfacebook,imageViewInstgram,imageViewTwitter;
 
     @Override
@@ -51,9 +51,12 @@ public class shop_details extends AppCompatActivity {
         number = (TextView) findViewById(R.id.mobile_text);
         details = (TextView) findViewById(R.id.details_text);
 
+        calc=FirebaseDatabase.getInstance().getReference().child("covernment");
 
         sh = getSharedPreferences("plz", Context.MODE_PRIVATE);
         def= FirebaseDatabase.getInstance().getReference().child("catorgy").child( sh.getString( "data_catorgy","emputy")).child( sh.getString( "data_catorgy","emputy")).child( sh.getString( "data_city","emputy")).child(sh.getString( "data_shop","emputy"));
+
+
 
 
 
@@ -82,6 +85,7 @@ def.addValueEventListener(new ValueEventListener() {
         String CollectionHomeNumber =home_data+"\n"+home_data2+"\n"+home_data3;
 
         String img=map.get("catorgy_image");
+
         String name=map.get("catorgy_name");
 
         final String FacebookLink=map.get("Facebook");
@@ -129,6 +133,7 @@ try {
         imageViewInstgram.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
+
             {
 
                 try {

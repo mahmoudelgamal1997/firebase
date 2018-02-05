@@ -38,9 +38,9 @@
 
 
         <EditText
-            android:layout_width="@dimen/_47sdp"
-            android:layout_height="@dimen/_60sdp"
-            android:background="#FFFFFF"
+            android:layout_width="@dimen/_62sdp"
+            android:layout_height="@dimen/_75sdp"
+            android:background="@drawable/border_edittext"
             android:id="@+id/editText10"
             android:maxLength="1"
             android:paddingLeft="@dimen/_15sdp"
@@ -53,78 +53,78 @@
             />
 
         <EditText
-            android:layout_width="@dimen/_47sdp"
-            android:layout_height="@dimen/_60sdp"
-            android:background="#FFFFFF"
+            android:layout_width="@dimen/_62sdp"
+            android:layout_height="@dimen/_75sdp"
+            android:background="@drawable/border_edittext"
             android:paddingLeft="@dimen/_15sdp"
             android:textSize="@dimen/_25sdp"
             android:maxLength="1"
             android:id="@+id/editText11"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textView4"
-            android:layout_marginLeft="@dimen/_55sdp"
+            android:layout_marginLeft="@dimen/_72sdp"
             android:layout_marginTop="@dimen/_20sdp"
 
             />
 
         <EditText
-            android:layout_width="@dimen/_47sdp"
-            android:layout_height="@dimen/_60sdp"
-            android:background="#FFFFFF"
+            android:layout_width="@dimen/_62sdp"
+            android:layout_height="@dimen/_75sdp"
+            android:background="@drawable/border_edittext"
             android:paddingLeft="15dp"
             android:textSize="25dp"
             android:id="@+id/editText12"
             android:maxLength="1"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textView4"
-            android:layout_marginLeft="@dimen/_104sdp"
+            android:layout_marginLeft="@dimen/_134sdp"
             android:layout_marginTop="@dimen/_20sdp"
 
             />
 
 
         <EditText
-            android:layout_width="@dimen/_47sdp"
-            android:layout_height="@dimen/_60sdp"
-            android:background="#FFFFFF"
+            android:layout_width="@dimen/_62sdp"
+            android:layout_height="@dimen/_75sdp"
+            android:background="@drawable/border_edittext"
             android:paddingLeft="15dp"
             android:textSize="25dp"
             android:maxLength="1"
             android:id="@+id/editText13"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textView4"
-            android:layout_marginLeft="@dimen/_154sdp"
+            android:layout_marginLeft="@dimen/_190sdp"
             android:layout_marginTop="@dimen/_20sdp"
             />
 
 
         <EditText
-            android:layout_width="@dimen/_47sdp"
-            android:layout_height="@dimen/_60sdp"
+            android:layout_width="@dimen/_62sdp"
+            android:layout_height="@dimen/_75sdp"
             android:id="@+id/editText14"
             android:paddingLeft="15dp"
             android:textSize="25dp"
             android:maxLength="1"
-            android:background="#FFFFFF"
+            android:background="@drawable/border_edittext"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textView4"
-            android:layout_marginLeft="@dimen/_203sdp"
+            android:layout_marginLeft="@dimen/_249sdp"
             android:layout_marginTop="@dimen/_20sdp"
 
             />
 
 
         <EditText
-            android:layout_width="@dimen/_47sdp"
-            android:layout_height="@dimen/_60sdp"
+            android:layout_width="@dimen/_62sdp"
+            android:layout_height="@dimen/_75sdp"
             android:id="@+id/editText15"
             android:paddingLeft="15dp"
             android:textSize="25dp"
             android:maxLength="1"
-            android:background="#FFFFFF"
+            android:background="@drawable/border_edittext"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textView4"
-            android:layout_marginLeft="@dimen/_252sdp"
+            android:layout_marginLeft="@dimen/_310sdp"
             android:layout_marginTop="@dimen/_20sdp"
 
             />
@@ -156,17 +156,17 @@
             android:background="@drawable/edittext" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/_120sdp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/spinner"
             android:text="استعلام"
             android:id="@+id/bb"
             android:onClick="but"
             android:layout_marginLeft="@dimen/_85sdp"
-            android:layout_marginTop="@dimen/_60sdp"
+            android:layout_marginTop="153dp"
             android:textColor="#FFFFFF"
             android:background="@drawable/mm"
-            />
+            android:layout_below="@+id/spinner"
+            android:layout_centerHorizontal="true" />
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/_200sdp"

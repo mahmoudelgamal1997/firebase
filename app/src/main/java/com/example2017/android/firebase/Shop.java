@@ -19,13 +19,17 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Shop extends AppCompatActivity {
     TextView CustomAppearText;
     SharedPreferences sh;
-    DatabaseReference shop;
+    DatabaseReference shop,clicksOnshop;
     RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,7 @@ public class Shop extends AppCompatActivity {
         sh=getSharedPreferences("plz",Context.MODE_PRIVATE );
 
         shop= FirebaseDatabase.getInstance().getReference().child("catorgy").child( sh.getString( "data_catorgy","emputy")).child( sh.getString( "data_catorgy","emputy")).child( sh.getString( "data_city","emputy"));
+        clicksOnshop=FirebaseDatabase.getInstance().getReference().child("covernment");
 
 
 
@@ -102,6 +107,9 @@ private void retrieve(DatabaseReference data){
                     mydata.putString( "data_shop",model.getCatorgy_name() );
                     mydata.commit();
 
+                    //to calculate clicks
+                    // calculateClicks("gladiator");
+
                     Intent intent=new Intent(getApplicationContext(),shop_details.class);
                     startActivity(intent);
 
@@ -147,4 +155,31 @@ recyclerView.setAdapter(firebaseRecyclerAdapter);
 
 
 
-}
+    private void calculateClicks(final String name)
+
+    {
+clicksOnshop.addValueEventListener(new ValueEventListener() {
+    @Override
+    public void onDataChange(DataSnapshot dataSnapshot) {
+
+        GenericTypeIndicator<Map<String, String>> genericTypeIndicator = new GenericTypeIndicator<Map<String, String>>() {};
+        Map<String, String> map = dataSnapshot.getValue(genericTypeIndicator );
+
+        String sss=map.get("townteam");
+
+
+        Toast.makeText(getApplication(),sss,Toast.LENGTH_LONG).show();
+
+ }
+
+
+
+
+    @Override
+    public void onCancelled(DatabaseError databaseError) {
+
+    }
+});
+
+
+}}

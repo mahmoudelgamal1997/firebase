@@ -1,20 +1,35 @@
 package com.example2017.android.firebase;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.firebase.client.Firebase;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
+
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
+DatabaseReference imagesCover;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Firebase.setAndroidContext(this);
+        imagesCover=FirebaseDatabase.getInstance().getReference().child("cover");
 
 
     }
@@ -35,6 +50,21 @@ public void start(View v) {
 
     }
 
+public void setImage(Context context,String path)
+{
+
+    ImageView imageView=(ImageView)findViewById(R.id.imageView10);
+    Picasso.with(context).load(path).into(imageView);
+
+}
+
+    public void SetImage(Context cnt, String img) {
+
+
+        ImageView imgview = (ImageView)findViewById(R.id.imageView10);
+        Picasso.with(cnt).load(img).placeholder(R.drawable.progress).into(imgview);
+
+    }
 
 }
 
