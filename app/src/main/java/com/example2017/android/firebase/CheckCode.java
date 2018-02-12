@@ -59,9 +59,9 @@ public class CheckCode extends AppCompatActivity {
          codeCollection=code_edit1.getText().toString().toLowerCase().trim()+
                 code_edit2.getText().toString().toLowerCase().trim()+
                 code_edit3.getText().toString().toLowerCase().trim()+
-                code_edit4.getText().toString().toLowerCase().toString().trim()+
-                code_edit5.getText().toString().toLowerCase().toString().trim()+
-                code_edit6.getText().toString().toLowerCase().toString().trim();
+                code_edit4.getText().toString().toLowerCase().trim()+
+                code_edit5.getText().toString().toLowerCase().trim()+
+                code_edit6.getText().toString().toLowerCase().trim();
 
 
      //   Toast.makeText(getApplicationContext(),codeCollection,Toast.LENGTH_LONG).show();
@@ -110,9 +110,9 @@ public class CheckCode extends AppCompatActivity {
         codeCollection=code_edit1.getText().toString().toLowerCase().trim()+
                 code_edit2.getText().toString().toLowerCase().trim()+
                 code_edit3.getText().toString().toLowerCase().trim()+
-                code_edit4.getText().toString().toLowerCase().toString().trim()+
-                code_edit5.getText().toString().toLowerCase().toString().trim()+
-                code_edit6.getText().toString().toLowerCase().toString().trim();
+                code_edit4.getText().toString().toLowerCase().trim()+
+                code_edit5.getText().toString().toLowerCase().trim()+
+                code_edit6.getText().toString().toLowerCase().trim();
 
 
         if(!TextUtils.isEmpty(codeCollection.toString())){
@@ -231,7 +231,7 @@ public void ShowMessage(final String message, String person1, String person2, St
             "phone number : "+ number +"\n"+
             "adress : "+adress+"\n";
 
-            ;
+
 
     builder.setMessage(organize_message);
      alertDialog= builder.create();
@@ -245,43 +245,45 @@ public void ShowMessage(final String message, String person1, String person2, St
         //to find the balance of the code
         // if equals zero
         //no operation will be done
-        int v=Integer.parseInt(value);
-        if (v!=0) {
-            v--;
-            String s = String.valueOf(v);
-            show.child(code).child(shop_selected).setValue(s);
-            mediaPlayer.start();
-            alert.setMessage(" لقد تم الخصم");
-            alert.setCancelable(false);
-            alert.setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i)
-                {
+        try {
+            int v = Integer.parseInt(value);
+            if (v != 0) {
+                v--;
+                String s = String.valueOf(v);
+                show.child(code).child(shop_selected).setValue(s);
+                mediaPlayer.start();
+                alert.setMessage(" لقد تم الخصم");
+                alert.setCancelable(false);
+                alert.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
 
-                }
-            });
+                    }
+                });
 
-            AlertDialog a=alert.create();
-            a.show();
+                AlertDialog a = alert.create();
+                a.show();
+
+            } else {
+                mediaPlayer.start();
+                alert.setMessage("لا تمتلك عدد زيارات كافيه");
+                alert.setCancelable(true);
+                alert.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+
+                AlertDialog a = alert.create();
+                a.show();
+
+            }
+
+        }catch (Exception e){
+
 
         }
-        else{
-            mediaPlayer.start();
-            alert.setMessage("لا تمتلك نقاط كافيه ");
-            alert.setCancelable(true);
-            alert.setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-
-                }
-            });
-
-            AlertDialog a=alert.create();
-            a.show();
-
-        }
-
-
     }
 
 

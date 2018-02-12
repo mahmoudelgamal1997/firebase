@@ -2,6 +2,7 @@ package com.example2017.android.firebase;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -27,9 +28,24 @@ DatabaseReference imagesCover;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        int welcome_time = 1500;
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                Intent startLandingPageActivity = new Intent(MainActivity.this, WelcomeActivity.class);
+                startActivity(startLandingPageActivity);
+
+            }
+        }, welcome_time);
+
+
+
         setContentView(R.layout.activity_main);
         Firebase.setAndroidContext(this);
         imagesCover=FirebaseDatabase.getInstance().getReference().child("cover");
+
 
 
     }

@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
@@ -52,7 +53,8 @@ public class Shop extends AppCompatActivity {
         shop= FirebaseDatabase.getInstance().getReference().child("catorgy").child( sh.getString( "data_catorgy","emputy")).child( sh.getString( "data_catorgy","emputy")).child( sh.getString( "data_city","emputy"));
         clicksOnshop=FirebaseDatabase.getInstance().getReference().child("covernment");
 
-
+        shop.keepSynced(true);
+        clicksOnshop.keepSynced(true);
 
         //to view a custom text  when data is emputy
        shop.addValueEventListener(new ValueEventListener() {
@@ -148,7 +150,9 @@ recyclerView.setAdapter(firebaseRecyclerAdapter);
         public void SetImage(Context cnt, String img) {
 
             ImageView imgview = (ImageView) view.findViewById(R.id.imageView);
-            Picasso.with(cnt).load(img).placeholder(R.drawable.progress).into(imgview);
+
+
+            Picasso.with(cnt).load(img).networkPolicy(NetworkPolicy.OFFLINE).placeholder(R.drawable.progress).into(imgview);
         }
 
     }

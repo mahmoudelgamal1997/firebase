@@ -14,6 +14,7 @@ import com.firebase.client.Firebase;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 public class Catorgy extends AppCompatActivity {
@@ -120,7 +121,11 @@ public class Catorgy extends AppCompatActivity {
         public void SetImage(Context cnt, String img) {
 
             ImageView imgview = (ImageView) view.findViewById(R.id.imageView);
-            Picasso.with(cnt).load(img).placeholder(R.drawable.progress).into(imgview);
+
+
+            // .networkPolicy(NetworkPolicy.OFFLINE)
+            //to cash data
+            Picasso.with(cnt).load(img).networkPolicy(NetworkPolicy.OFFLINE).placeholder(R.drawable.progress).into(imgview);
         }
 
 

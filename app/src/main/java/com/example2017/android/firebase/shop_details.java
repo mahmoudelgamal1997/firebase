@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
@@ -169,7 +170,11 @@ try {
 
 
         ImageView imgview = (ImageView)findViewById(R.id.imageView3);
-        Picasso.with(cnt).load(img).placeholder(R.drawable.progress).into(imgview);
+
+        // .networkPolicy(NetworkPolicy.OFFLINE)
+        //to cash data
+
+        Picasso.with(cnt).load(img).networkPolicy(NetworkPolicy.OFFLINE).placeholder(R.drawable.progress).into(imgview);
     }
 
 
