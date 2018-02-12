@@ -10,7 +10,7 @@ import com.squareup.picasso.Picasso;
  * Created by M7moud on 11-Dec-17.
  */
 public class firebase extends Application {
-//
+//this class to cash images in app
     @Override
     public void onCreate() {
         super.onCreate();

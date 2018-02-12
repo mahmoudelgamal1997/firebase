@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseException;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -21,6 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
@@ -51,7 +53,7 @@ public class Shop extends AppCompatActivity {
         sh=getSharedPreferences("plz",Context.MODE_PRIVATE );
 
         shop= FirebaseDatabase.getInstance().getReference().child("catorgy").child( sh.getString( "data_catorgy","emputy")).child( sh.getString( "data_catorgy","emputy")).child( sh.getString( "data_city","emputy"));
-        clicksOnshop=FirebaseDatabase.getInstance().getReference().child("covernment");
+        clicksOnshop=FirebaseDatabase.getInstance().getReference().child("ShopVisitors");
 
         shop.keepSynced(true);
         clicksOnshop.keepSynced(true);
@@ -109,8 +111,14 @@ private void retrieve(DatabaseReference data){
                     mydata.putString( "data_shop",model.getCatorgy_name() );
                     mydata.commit();
 
-                    //to calculate clicks
-                    // calculateClicks("gladiator");
+
+
+
+
+                        //to calculate clicks
+
+                        calculateClicks(model.getCatorgy_name());
+
 
                     Intent intent=new Intent(getApplicationContext(),shop_details.class);
                     startActivity(intent);
@@ -147,12 +155,23 @@ recyclerView.setAdapter(firebaseRecyclerAdapter);
         }
 
 
-        public void SetImage(Context cnt, String img) {
+        public void SetImage(final Context cnt, final String img) {
 
-            ImageView imgview = (ImageView) view.findViewById(R.id.imageView);
+      final       ImageView imgview = (ImageView) view.findViewById(R.id.imageView);
 
 
-            Picasso.with(cnt).load(img).networkPolicy(NetworkPolicy.OFFLINE).placeholder(R.drawable.progress).into(imgview);
+            Picasso.with(cnt).load(img).networkPolicy(NetworkPolicy.OFFLINE).placeholder(R.drawable.progress).into(imgview, new Callback() {
+                @Override
+                public void onSuccess() {
+
+                }
+
+                @Override
+                public void onError() {
+
+                    Picasso.with(cnt).load(img).placeholder(R.drawable.progress).into(imgview);
+                }
+            });
         }
 
     }
@@ -162,28 +181,35 @@ recyclerView.setAdapter(firebaseRecyclerAdapter);
     private void calculateClicks(final String name)
 
     {
-clicksOnshop.addValueEventListener(new ValueEventListener() {
-    @Override
-    public void onDataChange(DataSnapshot dataSnapshot) {
-
-        GenericTypeIndicator<Map<String, String>> genericTypeIndicator = new GenericTypeIndicator<Map<String, String>>() {};
-        Map<String, String> map = dataSnapshot.getValue(genericTypeIndicator );
-
-        String sss=map.get("townteam");
 
 
-        Toast.makeText(getApplication(),sss,Toast.LENGTH_LONG).show();
-
- }
-
-
+    clicksOnshop.child(name).child("visits").addListenerForSingleValueEvent(new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
 
 
-    @Override
-    public void onCancelled(DatabaseError databaseError) {
+            String numberOfVisit = dataSnapshot.getValue(String.class);
+            count_shop_visit(numberOfVisit, name);
+
+        }
+
+        @Override
+        public void onCancelled(DatabaseError databaseError) {
+        }
+    });
+
+
 
     }
-});
+
+    public void  count_shop_visit (String number,String Shop_Name){
+
+        int x=Integer.parseInt(number);
+        x++;
+     //   clicksOnshop.child(Shop_Name).child(Shop_Name).setValue(Shop_Name);
+       clicksOnshop.child(Shop_Name).child("visits").setValue(String.valueOf(x));
+
+    }
 
 
-}}
+}

@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -23,29 +24,27 @@ import com.squareup.picasso.Picasso;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-DatabaseReference imagesCover;
+DatabaseReference clicksOnshop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        int welcome_time = 1500;
-        new Handler().postDelayed(new Runnable() {
-
-            @Override
-            public void run() {
-                Intent startLandingPageActivity = new Intent(MainActivity.this, WelcomeActivity.class);
-                startActivity(startLandingPageActivity);
-
-            }
-        }, welcome_time);
-
-
-
         setContentView(R.layout.activity_main);
         Firebase.setAndroidContext(this);
-        imagesCover=FirebaseDatabase.getInstance().getReference().child("cover");
+        /*
+        int welcome_time = 1500;
+        new Handler().postDelayed(new Runnable(){
+            @Override
+            public void run() {
+                Intent mainIntent = new Intent(MainActivity.this,WelcomeActivity.class);
+                MainActivity.this.startActivity(mainIntent);
+                MainActivity.this.finish();
+            }
+        }, welcome_time);
+         */
 
+        Firebase.setAndroidContext(this);
+        clicksOnshop=FirebaseDatabase.getInstance().getReference().child("covernment");
 
 
     }
@@ -55,6 +54,8 @@ DatabaseReference imagesCover;
 public void start(View v) {
     Intent intent = new Intent(this, Eldalel.class);
     startActivity(intent);
+
+
 
 }
 
@@ -82,7 +83,39 @@ public void setImage(Context context,String path)
 
     }
 
-}
+
+
+    private void calculateClicks(final String name)
+
+    {
+        clicksOnshop.child(name).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+
+         int numberOfVisit=dataSnapshot.getValue(Integer.class);
+                count_shop_visit(numberOfVisit,name);
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+
+    }
+
+    public void  count_shop_visit (int number,String Shop_Name){
+
+        number++;
+
+        clicksOnshop.child(Shop_Name).setValue(number);
+
+
+    }
+
+
+    }
+
 
 
 
