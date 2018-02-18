@@ -10,23 +10,29 @@
     tools:context="com.example2017.android.firebase.MainActivity"
     android:background="@drawable/main">
 
+  <pl.droidsonroids.gif.GifImageView
+      android:layout_width="match_parent"
+      android:layout_height="500dp"
+      android:background="@drawable/giphy"
+      />
+
   <Button
       android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+      android:layout_height="120dp"
       android:text="الدليل"
       android:textSize="24dp"
       android:textColor="#FFFFFFFF"
       android:id="@+id/button4"
       android:onClick="start"
-      android:background="@drawable/edittext"
+      android:background="@drawable/eldalel"
       android:layout_alignParentBottom="true"
       android:layout_centerHorizontal="true"
-      android:layout_marginBottom="100dp" />
+      android:layout_marginBottom="120dp" />
 
 
   <Button
       android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+      android:layout_height="150dp"
       android:text="كارت الخصم"
       android:textSize="24dp"
       android:textColor="#FFFFFFFF"
@@ -35,5 +41,5 @@
       android:background="@drawable/butt"
       android:layout_alignParentBottom="true"
       android:layout_centerHorizontal="true"
-      android:layout_marginBottom="161dp" />
+      android:layout_marginBottom="290dp" />
 </RelativeLayout>

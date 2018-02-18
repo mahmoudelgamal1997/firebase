@@ -9,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.firebase.client.Firebase;
 import com.google.firebase.database.DataSnapshot;
@@ -31,19 +30,8 @@ DatabaseReference clicksOnshop;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Firebase.setAndroidContext(this);
-        /*
-        int welcome_time = 1500;
-        new Handler().postDelayed(new Runnable(){
-            @Override
-            public void run() {
-                Intent mainIntent = new Intent(MainActivity.this,WelcomeActivity.class);
-                MainActivity.this.startActivity(mainIntent);
-                MainActivity.this.finish();
-            }
-        }, welcome_time);
-         */
 
-        Firebase.setAndroidContext(this);
+
         clicksOnshop=FirebaseDatabase.getInstance().getReference().child("covernment");
 
 

@@ -10,6 +10,7 @@
     tools:context="com.example2017.android.firebase.MainActivity"
     android:background="@drawable/main">
 
+
   <Button
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
