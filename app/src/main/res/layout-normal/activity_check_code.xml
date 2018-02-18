@@ -162,10 +162,10 @@
             android:text="استعلام"
             android:id="@+id/bb"
             android:onClick="but"
-            android:layout_marginLeft="@dimen/_70sdp"
+            android:layout_marginLeft="@dimen/_25sdp"
             android:layout_marginTop="@dimen/_60sdp"
             android:textColor="#FFFFFF"
-            android:background="@drawable/mm"
+            android:background="@drawable/checkbut"
             />
         <RelativeLayout
             android:layout_width="match_parent"

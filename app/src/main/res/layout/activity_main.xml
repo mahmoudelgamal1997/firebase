@@ -40,6 +40,18 @@
       android:layout_alignParentBottom="true"
       android:layout_centerHorizontal="true"
       android:layout_marginBottom="161dp" />
+  <Button
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="طريقه الاستخدام"
+      android:textSize="24dp"
+      android:textColor="#FFFFFFFF"
+      android:id="@+id/button5"
+      android:onClick="using"
+      android:background="@drawable/using"
+      android:layout_alignParentBottom="true"
+      android:layout_centerHorizontal="true"
+      android:layout_marginBottom="20dp" />
 
   <ImageView
       android:layout_width="match_parent"

@@ -15,29 +15,42 @@
       />
 
   <Button
-      android:layout_width="wrap_content"
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:text="الدليل"
-      android:textSize="24dp"
+      android:textSize="30dp"
       android:textColor="#FFFFFFFF"
       android:id="@+id/button4"
       android:onClick="start"
-      android:background="@drawable/edittext"
+      android:background="@drawable/eldalel"
       android:layout_alignParentBottom="true"
       android:layout_centerHorizontal="true"
       android:layout_marginBottom="100dp" />
 
 
   <Button
-      android:layout_width="wrap_content"
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:text="كارت الخصم"
-      android:textSize="24dp"
+      android:textSize="30dp"
       android:textColor="#FFFFFFFF"
       android:id="@+id/button3"
       android:onClick="code"
-      android:background="@drawable/butt"
+      android:background="@drawable/offerbutton"
       android:layout_alignParentBottom="true"
       android:layout_centerHorizontal="true"
       android:layout_marginBottom="161dp" />
+  <Button
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="طريقه الاستخدام"
+      android:textSize="30dp"
+      android:textColor="#FFFFFFFF"
+      android:id="@+id/button5"
+      android:onClick="using"
+      android:background="@drawable/using"
+      android:layout_alignParentBottom="true"
+      android:layout_centerHorizontal="true"
+      android:layout_marginBottom="20dp" />
+
 </RelativeLayout>

@@ -18,9 +18,6 @@
         android:screenOrientation="portrait"
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
-
-
-
         <activity
             android:name=".WelcomeActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -31,7 +28,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".Eldalel" />
         <activity android:name=".Catorgy" />
         <activity
@@ -40,9 +36,8 @@
             android:screenOrientation="portrait" />
         <activity android:name=".Shop" />
         <activity android:name=".shop_details" />
-
         <activity android:name=".MainActivity" />
-
+        <activity android:name=".usingcard"></activity>
     </application>
 
 </manifest>

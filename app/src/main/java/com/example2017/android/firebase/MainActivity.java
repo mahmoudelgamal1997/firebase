@@ -47,6 +47,13 @@ public void start(View v) {
 
 }
 
+    public void using(View v) {
+        Intent intent = new Intent(this, usingcard.class);
+        startActivity(intent);
+
+
+
+    }
 
     public void code(View v) {
         Intent intent = new Intent(this, CheckCode.class);

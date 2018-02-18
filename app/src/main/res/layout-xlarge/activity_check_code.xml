@@ -156,15 +156,16 @@
             android:background="@drawable/edittext" />
 
         <Button
-            android:layout_width="@dimen/_120sdp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
             android:text="استعلام"
+            android:textSize="70dp"
             android:id="@+id/bb"
             android:onClick="but"
             android:layout_marginLeft="@dimen/_85sdp"
             android:layout_marginTop="153dp"
             android:textColor="#FFFFFF"
-            android:background="@drawable/mm"
+            android:background="@drawable/checkbut"
             android:layout_below="@+id/spinner"
             android:layout_centerHorizontal="true" />
         <RelativeLayout
