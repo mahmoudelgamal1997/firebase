@@ -7,13 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.firebase.client.Firebase;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
@@ -135,11 +131,23 @@ public class Eldalel extends AppCompatActivity {
 
             // .networkPolicy(NetworkPolicy.OFFLINE)
             //to cash data
-             Picasso.with(cnt).load(img).networkPolicy(NetworkPolicy.OFFLINE).into(imgview);
+             Picasso.with(cnt).load(img).networkPolicy(NetworkPolicy.OFFLINE).into(imgview, new Callback() {
+                @Override
+                public void onSuccess() {
+
+                }
+
+                @Override
+                public void onError() {
+
+                    Picasso.with(cnt).load(img).placeholder(R.drawable.progress).into(imgview);
+                }
+            });
+        }
 
         }
 
 
 
-    }  }
+  }
 

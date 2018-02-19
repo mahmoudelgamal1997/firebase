@@ -5,9 +5,10 @@
     android:layout_height="match_parent"
     tools:context="com.example2017.android.firebase.usingcard">
 
-    <pl.droidsonroids.gif.GifImageView
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/using"
+        android:background="@drawable/use"
+        android:scaleType="fitXY"
         />
 </RelativeLayout>

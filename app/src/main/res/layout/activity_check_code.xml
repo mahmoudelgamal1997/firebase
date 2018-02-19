@@ -15,12 +15,11 @@
 
 
 
-        <ImageView
+        <pl.droidsonroids.gif.GifImageView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_200sdp"
-            android:id="@+id/imageView2"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
+            android:layout_height="200dp"
+            android:id="@+id/gif"
+            android:background="@drawable/gifmain"
             />
         <TextView
             android:layout_width="wrap_content"
@@ -30,7 +29,7 @@
             android:textSize="@dimen/_25sdp"
             android:textColor="#E91E63"
             android:id="@+id/textView4"
-            android:layout_below="@+id/imageView2"
+            android:layout_below="@+id/gif"
             android:layout_marginTop="@dimen/_12sdp"
             android:layout_alignParentStart="true" />
         <EditText
@@ -149,7 +148,7 @@
             android:layout_below="@+id/textView2"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/_10sdp"
-            android:background="@drawable/edittext" />
+            android:background="@drawable/checkbut" />
 
         <Button
             android:layout_width="wrap_content"
@@ -158,10 +157,10 @@
             android:text="استعلام"
             android:id="@+id/bb"
             android:onClick="but"
-            android:layout_marginLeft="@dimen/_85sdp"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/_60sdp"
             android:textColor="#FFFFFF"
-            android:background="@drawable/mm"
+            android:background="@drawable/checkbut"
             />
         <RelativeLayout
             android:layout_width="match_parent"

@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
@@ -166,18 +167,30 @@ try {
 
 
 
-    public void SetImage(Context cnt, String img) {
+    public void SetImage( final Context cnt, final String img) {
 
 
-        ImageView imgview = (ImageView)findViewById(R.id.imageView3);
+       final ImageView imgview = (ImageView)findViewById(R.id.imageView3);
 
         // .networkPolicy(NetworkPolicy.OFFLINE)
         //to cash data
 
-        Picasso.with(cnt).load(img).networkPolicy(NetworkPolicy.OFFLINE).placeholder(R.drawable.progress).into(imgview);
+        Picasso.with(cnt).load(img).networkPolicy(NetworkPolicy.OFFLINE).placeholder(R.drawable.progress).into(imgview, new Callback() {
+            @Override
+            public void onSuccess() {
+
+            }
+
+            @Override
+            public void onError() {
+
+                Picasso.with(cnt).load(img).placeholder(R.drawable.progress).into(imgview);
+            }
+        });
+    }
     }
 
 
 
 
-}
+

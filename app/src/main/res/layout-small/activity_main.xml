@@ -40,8 +40,8 @@
   <Button
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="طريقه الاستخدام"
-      android:textSize="24dp"
+      android:text="شروط استخدام كارت الخصم      "
+      android:textSize="23dp"
       android:textColor="#FFFFFFFF"
       android:id="@+id/button5"
       android:onClick="code"
