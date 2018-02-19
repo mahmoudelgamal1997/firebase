@@ -10,8 +10,9 @@
 
   <pl.droidsonroids.gif.GifImageView
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:background="@drawable/giphy"
+      android:layout_height="200dp"
+      android:background="@drawable/gifmain"
+
       />
 
   <Button
@@ -48,15 +49,10 @@
       android:textColor="#FFFFFFFF"
       android:id="@+id/button5"
       android:onClick="using"
-      android:background="@drawable/using"
+      android:background="@drawable/usingbut"
       android:layout_alignParentBottom="true"
       android:layout_centerHorizontal="true"
       android:layout_marginBottom="20dp" />
 
-  <ImageView
-      android:layout_width="match_parent"
-      android:layout_height="180dp"
-      android:id="@+id/imageView10"
-      android:layout_alignParentTop="true"
-      android:layout_alignParentStart="true" />
+
 </RelativeLayout>

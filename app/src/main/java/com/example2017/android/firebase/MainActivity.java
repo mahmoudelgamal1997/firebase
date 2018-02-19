@@ -62,21 +62,7 @@ public void start(View v) {
 
     }
 
-public void setImage(Context context,String path)
-{
 
-    ImageView imageView=(ImageView)findViewById(R.id.imageView10);
-    Picasso.with(context).load(path).into(imageView);
-
-}
-
-    public void SetImage(Context cnt, String img) {
-
-
-        ImageView imgview = (ImageView)findViewById(R.id.imageView10);
-        Picasso.with(cnt).load(img).placeholder(R.drawable.progress).into(imgview);
-
-    }
 
 
 

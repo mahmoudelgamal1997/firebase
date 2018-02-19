@@ -11,7 +11,7 @@
   <pl.droidsonroids.gif.GifImageView
       android:layout_width="match_parent"
       android:layout_height="300dp"
-      android:background="@drawable/giphy"
+      android:background="@drawable/gifmain"
       />
 
   <Button
@@ -48,7 +48,7 @@
       android:textColor="#FFFFFFFF"
       android:id="@+id/button5"
       android:onClick="using"
-      android:background="@drawable/using"
+      android:background="@drawable/usingbut"
       android:layout_alignParentBottom="true"
       android:layout_centerHorizontal="true"
       android:layout_marginBottom="20dp" />
