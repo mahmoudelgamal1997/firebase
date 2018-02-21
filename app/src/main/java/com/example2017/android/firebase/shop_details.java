@@ -27,7 +27,7 @@ import java.io.IOException;
 import java.util.Map;
 
 public class shop_details extends AppCompatActivity {
-    TextView title,home,number,details;
+    TextView title,home,number,details,whats;
     SharedPreferences sh;
     DatabaseReference def,calc;
     ImageView imageView,imageViewfacebook,imageViewInstgram,imageViewTwitter;
@@ -52,7 +52,7 @@ public class shop_details extends AppCompatActivity {
         home = (TextView) findViewById(R.id.home_text);
         number = (TextView) findViewById(R.id.mobile_text);
         details = (TextView) findViewById(R.id.details_text);
-
+        whats=(TextView)findViewById(R.id.whats);
         calc=FirebaseDatabase.getInstance().getReference().child("covernment");
 
         sh = getSharedPreferences("plz", Context.MODE_PRIVATE);
@@ -91,7 +91,7 @@ def.addValueEventListener(new ValueEventListener() {
         String name=map.get("catorgy_name");
 
         final String FacebookLink=map.get("Facebook");
-        final String InstgramLink=map.get("Instgram");
+        final String WhatsLink=map.get("Instgram");
         final String TwitterLink=map.get("Twitter");
 
 
@@ -101,6 +101,7 @@ def.addValueEventListener(new ValueEventListener() {
         home.setText(CollectionHomeNumber);
         number.setText(CollectionMobileNumber);
         title.setText(name);
+        whats.setText(WhatsLink);
 
         imageViewfacebook.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,25 +133,6 @@ try {
             }
         });
 
-        imageViewInstgram.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-
-            {
-
-                try {
-
-                    Intent link = new Intent(Intent.ACTION_VIEW, Uri.parse(InstgramLink));
-                    startActivity(link);
-                }catch (Exception e)
-                {
-                    Toast.makeText(getApplication(),"لا يوجد انستجرام لهذا المحل ",Toast.LENGTH_LONG).show();
-                }
-
-
-
-            }
-        });
 
 
     }

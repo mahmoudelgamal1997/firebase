@@ -1,26 +1,23 @@
 package com.example2017.android.firebase;
 
-import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
+import android.content.pm.PackageManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.example2017.android.firebase.Manifest.permission;
 import com.firebase.client.Firebase;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.GenericTypeIndicator;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.StorageReference;
-import com.squareup.picasso.Picasso;
 
-import java.util.Map;
+
 
 public class MainActivity extends AppCompatActivity {
 DatabaseReference clicksOnshop;
@@ -31,8 +28,13 @@ DatabaseReference clicksOnshop;
         setContentView(R.layout.activity_main);
         Firebase.setAndroidContext(this);
 
+        ActivityCompat.requestPermissions(MainActivity.this,
+                new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE,android.Manifest.permission.READ_EXTERNAL_STORAGE},
+                1);
 
-        clicksOnshop=FirebaseDatabase.getInstance().getReference().child("covernment");
+
+
+        clicksOnshop = FirebaseDatabase.getInstance().getReference().child("covernment");
 
 
     }
@@ -66,171 +68,27 @@ public void start(View v) {
 
 
 
-    private void calculateClicks(final String name)
 
-    {
-        clicksOnshop.child(name).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
 
 
-         int numberOfVisit=dataSnapshot.getValue(Integer.class);
-                count_shop_visit(numberOfVisit,name);
 
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
 
-    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case 1: {
 
-    public void  count_shop_visit (int number,String Shop_Name){
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-        number++;
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
 
-        clicksOnshop.child(Shop_Name).setValue(number);
-
-
-    }
-
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-        mref.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(com.firebase.client.DataSnapshot dataSnapshot, String s) {
-
-                String value = dataSnapshot.getValue(String.class);
-                arrayList.add(value);
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildChanged(com.firebase.client.DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(com.firebase.client.DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(com.firebase.client.DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });
-
-
-
-
-    }}
-
-
-        final Posts posts1 = new Posts();
-        posts1.setTitle("film");
-        posts1.setContent("i love action");
-        posts1.setWriter("omar");
-
-        p.push().setValue(posts1).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
-                    Toast.makeText(getApplication(), "success", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    Toast.makeText(getApplication(), "failed", Toast.LENGTH_SHORT).show();
-
-                }
-            }
-        });
-
-
-        p.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                HashMap<String,Posts> results = dataSnapshot.getValue(new GenericTypeIndicator<HashMap<String, Posts>>() {});
-
-                List<Posts> posts = new ArrayList<>(results.values());
-
-
-                for (Posts post : posts) {
-
-                    s.add(post.getTitle());
-                    //Log.e("Post Title",));
-                    adapter.notifyDataSetChanged();
-
-                }
-
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-
-    }
-
-
-
-
-
-
-
-public void but(View view){
-    p.addValueEventListener(new ValueEventListener() {
-        @Override
-        public void onDataChange(DataSnapshot dataSnapshot) {
-
-            HashMap<String,Posts> results = dataSnapshot.getValue(new GenericTypeIndicator<HashMap<String, Posts>>() {});
-
-            List<Posts> posts = new ArrayList<>(results.values());
-
-            for (Posts post : posts) {
-                Log.e("Post Title", post.getTitle());
-                s.add(String.valueOf(post.getTitle()));
-                Toast.makeText(getApplication(), (CharSequence) s,Toast.LENGTH_LONG).show();
-
+                return;
             }
 
 
 
-        }
-
-        @Override
-        public void onCancelled(DatabaseError databaseError) {
-
-        }
-    });
-}
-}
-*/
+    }}}}
