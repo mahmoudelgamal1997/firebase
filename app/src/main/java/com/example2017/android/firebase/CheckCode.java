@@ -236,7 +236,9 @@ public void ShowMessage(final String message, String person1, String person2, St
     builder.setMessage(organize_message);
      alertDialog= builder.create();
      alertDialog.show();
-     alertDialog.getWindow().setLayout(1000, 1500); //Controlling width and height.
+     alertDialog.getWindow().setLayout(800, 1100);
+
+    //Controlling width and height.
 }
 
 
@@ -310,7 +312,7 @@ public void ShowMessage(final String message, String person1, String person2, St
         int minute=c.get(Calendar.MINUTE);
 
 
-        String collection=""+year+"-"+month+1+"-"+day +"   "+hour+":"+minute;
+        String collection=""+year+"-"+(month+1)+"-"+day +"   "+hour+":"+minute;
 
         return collection;
     }

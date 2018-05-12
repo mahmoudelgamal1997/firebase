@@ -71,30 +71,34 @@ def.addValueEventListener(new ValueEventListener() {
         Map<String, String> map = dataSnapshot.getValue(genericTypeIndicator );
 
 
-        String details_data=map.get("shop_details");
 
-        String mobile_data =map.get("shop_mobile");
-        String mobile_data2=map.get("shop_mobile2");
-        String mobile_data3=map.get("shop_mobile3");
-        String mobile_data4=map.get("shop_mobile4");
+            String details_data = map.get("shop_details");
+            String mobile_data = map.get("shop_mobile");
+            String mobile_data2 = map.get("shop_mobile2");
+            String mobile_data3 = map.get("shop_mobile3");
+            String mobile_data4 = map.get("shop_mobile4");
 
-        String CollectionMobileNumber=mobile_data+"\n"+mobile_data2+"\n"+mobile_data3+"\n"+mobile_data4;
+            String CollectionMobileNumber = mobile_data + "\n" + mobile_data2 + "\n" + mobile_data3 + "\n" + mobile_data4;
 
-        String home_data=map.get("shop_home");
-        String home_data2=map.get("shop_home2");
-        String home_data3=map.get("shop_home3");
+            String home_data = map.get("shop_home");
+            String home_data2 = map.get("shop_home2");
+            String home_data3 = map.get("shop_home3");
 
-        String CollectionHomeNumber =home_data+"\n"+home_data2+"\n"+home_data3;
+            String CollectionHomeNumber = home_data + "\n" + home_data2 + "\n" + home_data3;
 
-        String img=map.get("catorgy_image");
+            String img = map.get("catorgy_image");
 
-        String name=map.get("catorgy_name");
+            String name = map.get("catorgy_name");
 
-        final String FacebookLink=map.get("Facebook");
-        final String WhatsLink=map.get("Instgram");
-        final String TwitterLink=map.get("Twitter");
+            final String FacebookLink = map.get("Facebook");
+            final String WhatsLink = map.get("Instgram");
+            final String TwitterLink = map.get("Twitter");
 
 
+
+        if (details_data==null){
+            details_data="";
+        }
 
         SetImage(getApplicationContext(),img);
         details.setText(details_data);
