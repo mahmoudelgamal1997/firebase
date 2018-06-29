@@ -7,52 +7,69 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example2017.android.firebase.MainActivity"
-    android:background="@drawable/main">
+    tools:context="com.example2017.android.firebase.MainActivity">
 
   <pl.droidsonroids.gif.GifImageView
       android:layout_width="match_parent"
-      android:layout_height="500dp"
+      android:layout_height="400dp"
       android:background="@drawable/gifmain"
+      android:id="@+id/gifImage"
+      />
+
+
+
+  <Button
+      android:layout_width="300dp"
+      android:layout_height="80dp"
+      android:text="الدليل"
+      android:textSize="29dp"
+      android:textColor="#000000"
+      android:id="@+id/button4"
+      android:onClick="start"
+      android:background="@drawable/button"
+      android:layout_below="@+id/gifImage"
+      android:layout_marginTop="@dimen/_5sdp"
+      android:layout_marginLeft="@dimen/_220sdp"
       />
 
   <Button
-      android:layout_width="match_parent"
-      android:layout_height="90dp"
-      android:text="الدليل"
-      android:textSize="24dp"
-      android:textColor="#FFFFFFFF"
-      android:id="@+id/button4"
-      android:onClick="start"
-      android:background="@drawable/eldalel"
-      android:layout_alignParentBottom="true"
-      android:layout_centerHorizontal="true"
-      android:layout_marginBottom="215dp" />
-
-
-  <Button
-      android:layout_width="match_parent"
-      android:layout_height="150dp"
+      android:layout_width="250dp"
+      android:layout_height="80dp"
       android:text="كارت الخصم"
-      android:textSize="24dp"
-      android:textColor="#FFFFFFFF"
+      android:textSize="29dp"
+      android:textColor="#000000"
       android:id="@+id/button3"
       android:onClick="code"
-      android:background="@drawable/offerbutton"
-      android:layout_alignParentBottom="true"
-      android:layout_centerHorizontal="true"
-      android:layout_marginBottom="300dp" />
+      android:background="@drawable/button"
+      android:layout_below="@+id/gifImage"
+      android:layout_marginTop="@dimen/_5sdp"
+      android:layout_marginLeft="@dimen/_120sdp"
+      />
+
   <Button
-      android:layout_width="match_parent"
-      android:layout_height="90dp"
-      android:text="شروط استخدام كارت الخصم      "
-      android:textSize="26dp"
-      android:textColor="#FFFFFFFF"
+      android:layout_width="200dp"
+      android:layout_height="80dp"
+      android:text="العروض"
+      android:textSize="29dp"
+      android:textColor="#000000"
+      android:id="@+id/button6"
+      android:background="@drawable/button"
+      android:layout_below="@+id/gifImage"
+      android:layout_marginTop="@dimen/_5sdp"
+      android:layout_marginLeft="@dimen/_39sdp"
+      />
+
+  <Button
+      android:layout_width="90dp"
+      android:layout_height="80dp"
+      android:textSize="23dp"
+      android:textColor="#000000"
       android:id="@+id/button5"
       android:onClick="using"
-      android:background="@drawable/usingbut"
-      android:layout_alignParentBottom="true"
-      android:layout_centerHorizontal="true"
-      android:layout_marginBottom="100dp" />
-
+      android:background="@drawable/button"
+      android:layout_below="@+id/gifImage"
+      android:layout_marginTop="@dimen/_5sdp"
+      android:foreground="@mipmap/information"
+      android:layout_marginLeft="@dimen/_2sdp"
+      />
 </RelativeLayout>

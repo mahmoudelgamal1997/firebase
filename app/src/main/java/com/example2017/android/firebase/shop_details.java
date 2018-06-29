@@ -1,3 +1,4 @@
+
 package com.example2017.android.firebase;
 
 import android.content.Context;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseException;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,10 +29,10 @@ import java.io.IOException;
 import java.util.Map;
 
 public class shop_details extends AppCompatActivity {
-    TextView title,home,number,details,whats;
+    TextView title, home, number, details, whats;
     SharedPreferences sh;
-    DatabaseReference def,calc;
-    ImageView imageView,imageViewfacebook,imageViewInstgram,imageViewTwitter;
+    public DatabaseReference def, calc;
+    ImageView imageView, imageViewfacebook, imageViewInstgram, imageViewTwitter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,123 +42,128 @@ public class shop_details extends AppCompatActivity {
 
         imageView = (ImageView) findViewById(R.id.imageView3);
 
-        imageViewfacebook=(ImageView)findViewById(R.id.imageView7);
-        imageViewTwitter =(ImageView)findViewById(R.id.imageView8);
-        imageViewInstgram=(ImageView)findViewById(R.id.imageView9);
-
-
-
+        imageViewfacebook = (ImageView) findViewById(R.id.imageView7);
+        imageViewTwitter = (ImageView) findViewById(R.id.imageView8);
+        imageViewInstgram = (ImageView) findViewById(R.id.imageView9);
 
 
         title = (TextView) findViewById(R.id.title_text);
         home = (TextView) findViewById(R.id.home_text);
         number = (TextView) findViewById(R.id.mobile_text);
         details = (TextView) findViewById(R.id.details_text);
-        whats=(TextView)findViewById(R.id.whats);
-        calc=FirebaseDatabase.getInstance().getReference().child("covernment");
+        whats = (TextView) findViewById(R.id.whats);
+        calc = FirebaseDatabase.getInstance().getReference().child("covernment");
+
 
         sh = getSharedPreferences("plz", Context.MODE_PRIVATE);
-        def= FirebaseDatabase.getInstance().getReference().child("catorgy").child( sh.getString( "data_catorgy","emputy")).child( sh.getString( "data_catorgy","emputy")).child( sh.getString( "data_city","emputy")).child(sh.getString( "data_shop","emputy"));
 
 
 
 
 
-def.addValueEventListener(new ValueEventListener() {
-    @Override
-    public void onDataChange(DataSnapshot dataSnapshot) {
+        String catorgy_name=sh.getString("data_catorgy", "emputy").trim();
+        String city_name=sh.getString("data_city", "emputy").trim();
+        String shop_name=sh.getString("data_shop", "emputy").trim();
+/*
+        def = FirebaseDatabase.getInstance().getReference().child("catorgy")
+                .child((sh.getString("data_catorgy", "emputy").trim()))
+                .child((sh.getString("data_catorgy", "emputy").trim()))
+                .child(sh.getString("data_city", "emputy").trim())
+                .child(sh.getString("data_shop", "emputy").trim());
+*/
+
+        String url=("https://fireapp-7a801.firebaseio.com/catorgy/"+catorgy_name+ "/"+catorgy_name+"/"+city_name+"/"+shop_name).trim();
+        def = FirebaseDatabase.getInstance().getReferenceFromUrl(url);
+
+            def.addValueEventListener(new ValueEventListener() {
+
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
 
 
-        GenericTypeIndicator<Map<String, String>> genericTypeIndicator = new GenericTypeIndicator<Map<String, String>>() {};
-        Map<String, String> map = dataSnapshot.getValue(genericTypeIndicator );
+                    GenericTypeIndicator<Map<String, String>> genericTypeIndicator = new GenericTypeIndicator<Map<String, String>>() {
+                    };
+                    Map<String, String> map = dataSnapshot.getValue(genericTypeIndicator);
 
 
+                    String details_data = map.get("shop_details");
+                    String mobile_data = map.get("shop_mobile");
+                    String mobile_data2 = map.get("shop_mobile2");
+                    String mobile_data3 = map.get("shop_mobile3");
+                    String mobile_data4 = map.get("shop_mobile4");
 
-            String details_data = map.get("shop_details");
-            String mobile_data = map.get("shop_mobile");
-            String mobile_data2 = map.get("shop_mobile2");
-            String mobile_data3 = map.get("shop_mobile3");
-            String mobile_data4 = map.get("shop_mobile4");
+                    String CollectionMobileNumber = mobile_data + "\n" + mobile_data2 + "\n" + mobile_data3 + "\n" + mobile_data4;
 
-            String CollectionMobileNumber = mobile_data + "\n" + mobile_data2 + "\n" + mobile_data3 + "\n" + mobile_data4;
+                    String home_data = map.get("shop_home");
+                    String home_data2 = map.get("shop_home2");
+                    String home_data3 = map.get("shop_home3");
 
-            String home_data = map.get("shop_home");
-            String home_data2 = map.get("shop_home2");
-            String home_data3 = map.get("shop_home3");
+                    String CollectionHomeNumber = home_data + "\n" + home_data2 + "\n" + home_data3;
 
-            String CollectionHomeNumber = home_data + "\n" + home_data2 + "\n" + home_data3;
+                    final String img = map.get("catorgy_image");
 
-            String img = map.get("catorgy_image");
+                    final String name = map.get("catorgy_name");
 
-            String name = map.get("catorgy_name");
-
-            final String FacebookLink = map.get("Facebook");
-            final String WhatsLink = map.get("Instgram");
-            final String TwitterLink = map.get("Twitter");
-
+                    final String FacebookLink = map.get("Facebook");
+                    final String WhatsLink = map.get("Instgram");
+                    final String TwitterLink = map.get("Twitter");
 
 
-        if (details_data==null){
-            details_data="";
-        }
+                    if (details_data == null) {
+                        details_data = "";
+                    }
 
-        SetImage(getApplicationContext(),img);
-        details.setText(details_data);
-        home.setText(CollectionHomeNumber);
-        number.setText(CollectionMobileNumber);
-        title.setText(name);
-        whats.setText(WhatsLink);
+                    SetImage(getApplicationContext(), img);
+                    details.setText(details_data);
+                    home.setText(CollectionHomeNumber);
+                    number.setText(CollectionMobileNumber);
+                    title.setText(name);
+                    whats.setText(WhatsLink);
 
-        imageViewfacebook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
+                    imageViewfacebook.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
 
-                try{
-                Intent link=new Intent(Intent.ACTION_VIEW, Uri.parse(FacebookLink));
-                startActivity(link);
-                }catch (Exception e)
-                {
-                    Toast.makeText(getApplication(),"لا يوجد فيس بوك لهذا المحل ",Toast.LENGTH_LONG).show();
+                            try {
+                                Intent link = new Intent(Intent.ACTION_VIEW, Uri.parse(FacebookLink));
+                                startActivity(link);
+                            } catch (Exception e) {
+                                Toast.makeText(getApplication(), "لا يوجد فيس بوك لهذا المحل ", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
+
+
+                    imageViewTwitter.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            try {
+                                Intent link = new Intent(Intent.ACTION_VIEW, Uri.parse(TwitterLink));
+                                startActivity(link);
+                            } catch (Exception e) {
+                                Toast.makeText(getApplication(), "لا يوجد تويتر لهذا المحل ", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
+
+
                 }
-            }
-        });
 
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Toast.makeText(getApplication(), databaseError.getMessage().toString(), Toast.LENGTH_LONG).show();
 
-        imageViewTwitter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
-try {
-    Intent link = new Intent(Intent.ACTION_VIEW, Uri.parse(TwitterLink));
-    startActivity(link);
-}catch (Exception e)
-{
-    Toast.makeText(getApplication(),"لا يوجد تويتر لهذا المحل ",Toast.LENGTH_LONG).show();
-}
-            }
-        });
-
+                }
+            });
 
 
     }
 
-    @Override
-    public void onCancelled(DatabaseError databaseError) {
 
-    }
-});
-
-    }
+    public void SetImage(final Context cnt, final String img) {
 
 
-
-
-
-    public void SetImage( final Context cnt, final String img) {
-
-
-       final ImageView imgview = (ImageView)findViewById(R.id.imageView3);
+        final ImageView imgview = (ImageView) findViewById(R.id.imageView3);
 
         // .networkPolicy(NetworkPolicy.OFFLINE)
         //to cash data
@@ -173,7 +180,10 @@ try {
                 Picasso.with(cnt).load(img).placeholder(R.drawable.progress).into(imgview);
             }
         });
+
+
     }
+
     }
 
 
