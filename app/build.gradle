@@ -38,5 +38,6 @@ dependencies {
     compile 'com.intuit.sdp:sdp-android:1.0.5'
     compile 'com.android.support:multidex:1.0.0'
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.10'
+    compile 'de.hdodenhof:circleimageview:2.2.0'
 }
 apply plugin: 'com.google.gms.google-services'

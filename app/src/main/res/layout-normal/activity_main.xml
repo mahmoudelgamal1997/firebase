@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#cecdcd"
     tools:context="com.example2017.android.firebase.MainActivity"
 >
 
@@ -69,5 +70,17 @@
       android:foreground="@mipmap/information"
       android:layout_marginLeft="@dimen/_2sdp"
       />
+
+
+
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:id="@+id/fragment"
+      android:layout_below="@+id/button3"
+      android:layout_marginTop="@dimen/_3sdp"
+      >
+
+  </RelativeLayout>
 
 </RelativeLayout>

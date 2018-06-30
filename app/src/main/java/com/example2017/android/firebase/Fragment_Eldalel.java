@@ -2,54 +2,72 @@ package com.example2017.android.firebase;
 
 import android.app.FragmentManager;
 import android.content.Context;
+import android.app.Fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.firebase.client.Firebase;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
-public class Eldalel extends AppCompatActivity {
+/**
+ * Created by M7moud on 30-Jun-18.
+ */
+public class Fragment_Eldalel extends Fragment {
+
     RecyclerView mre;
     private DatabaseReference mdatabase;
     SharedPreferences sh;
 
+    public Fragment_Eldalel() {
 
+    }
+
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_eldalel);
-        Firebase.setAndroidContext(this);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        View view1 = inflater.inflate(R.layout.activity_eldalel, null);
+
+
+        Firebase.setAndroidContext(getContext());
 
 
         mdatabase = FirebaseDatabase.getInstance().getReference().child("City");
         mdatabase.keepSynced(true);
 
 
-
-        mre = (RecyclerView) findViewById(R.id.view);
+        mre = (RecyclerView) view1.findViewById(R.id.view);
         mre.setHasFixedSize(true);
-        mre.setLayoutManager(new LinearLayoutManager(this));
-
+        mre.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
         Retrive();
 
+
+
+
+
+    return view1;
     }
+
+
+
+
 
 
     public void Retrive(){
@@ -67,23 +85,24 @@ public class Eldalel extends AppCompatActivity {
             protected void populateViewHolder(Post_viewholder viewHolder, final Posts model, int position) {
 
                 viewHolder.SetTitle((model.getTitle()));
-                viewHolder.SetImage(getApplicationContext(),model.getImg());
+                viewHolder.SetImage(getActivity(),model.getImg());
                 viewHolder.view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        sh=getSharedPreferences("plz",Context.MODE_PRIVATE );
+                        sh=getActivity().getSharedPreferences("plz", Context.MODE_PRIVATE );
                         SharedPreferences.Editor  mydata=sh.edit();
                         mydata.putString( "data_city",model.getTitle() );
                         mydata.commit();
 
 
 
+                        //to intent the fragment
+
                         Fragment_Catorgy fc=new Fragment_Catorgy();
-                        FragmentManager fm = getFragmentManager();
-                        fm.beginTransaction()
-                                .replace(R.id.fragment,fc);
-
-
+                        FragmentManager fragmentManager = getFragmentManager();
+                        fragmentManager.beginTransaction()
+                                .replace(R.id.fragment, fc)
+                                .commit();
 
 
                     }
@@ -123,7 +142,7 @@ public class Eldalel extends AppCompatActivity {
 
             // .networkPolicy(NetworkPolicy.OFFLINE)
             //to cash data
-             Picasso.with(cnt).load(img).networkPolicy(NetworkPolicy.OFFLINE).into(imgview, new Callback() {
+            Picasso.with(cnt).load(img).networkPolicy(NetworkPolicy.OFFLINE).into(imgview, new Callback() {
                 @Override
                 public void onSuccess() {
 
@@ -137,9 +156,16 @@ public class Eldalel extends AppCompatActivity {
             });
         }
 
-        }
+    }
 
 
 
-  }
+
+
+
+
+
+
+
+    }
 
