@@ -72,6 +72,7 @@ public class CheckCode extends AppCompatActivity {
         spinner = (Spinner) findViewById(R.id.spinner);
 
 
+
         FirebaseListAdapter<String> firebaseListAdapter = new FirebaseListAdapter<String>(
                 this,
                 String.class,

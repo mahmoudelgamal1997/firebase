@@ -44,7 +44,7 @@ public class Fragment_Eldalel extends Fragment {
         View view1 = inflater.inflate(R.layout.activity_eldalel, null);
 
 
-        Firebase.setAndroidContext(getContext());
+        Firebase.setAndroidContext(getActivity());
 
 
         mdatabase = FirebaseDatabase.getInstance().getReference().child("City");
@@ -53,7 +53,7 @@ public class Fragment_Eldalel extends Fragment {
 
         mre = (RecyclerView) view1.findViewById(R.id.view);
         mre.setHasFixedSize(true);
-        mre.setLayoutManager(new LinearLayoutManager(getContext()));
+        mre.setLayoutManager(new LinearLayoutManager(getActivity()));
 
 
         Retrive();
@@ -75,7 +75,7 @@ public class Fragment_Eldalel extends Fragment {
 
         FirebaseRecyclerAdapter<Posts,Post_viewholder> firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<Posts, Post_viewholder>(
                 Posts.class,
-                R.layout.cardview,
+                R.layout.new_cardview,
                 Post_viewholder.class,
                 mdatabase
         )
@@ -139,6 +139,11 @@ public class Fragment_Eldalel extends Fragment {
         public void SetImage(final Context cnt, final String img) {
 
             final ImageView imgview = (ImageView) view.findViewById(R.id.imageView);
+
+
+            final ImageView imgview1 = (ImageView) view.findViewById(R.id.profile_image);
+
+            Picasso.with(cnt).load(R.drawable.cardviewicon).into(imgview1);
 
             // .networkPolicy(NetworkPolicy.OFFLINE)
             //to cash data

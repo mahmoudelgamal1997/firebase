@@ -17,7 +17,7 @@
 
 
   <Button
-      android:layout_width="wrap_content"
+      android:layout_width="130dp"
       android:layout_height="wrap_content"
       android:text="الدليل"
       android:textSize="24dp"
@@ -27,25 +27,25 @@
       android:background="@drawable/button"
       android:layout_below="@+id/gifImage"
       android:layout_marginTop="@dimen/_5sdp"
-      android:layout_marginLeft="@dimen/_240sdp"
+      android:layout_marginLeft="@dimen/_215sdp"
       />
 
   <Button
-      android:layout_width="150dp"
+      android:layout_width="110dp"
       android:layout_height="50dp"
       android:text="كارت الخصم"
-      android:textSize="24dp"
+      android:textSize="20dp"
       android:textColor="#000000"
       android:id="@+id/button3"
       android:onClick="code"
       android:background="@drawable/button"
       android:layout_below="@+id/gifImage"
       android:layout_marginTop="@dimen/_5sdp"
-      android:layout_marginLeft="@dimen/_110sdp"
+      android:layout_marginLeft="@dimen/_120sdp"
       />
 
   <Button
-      android:layout_width="wrap_content"
+      android:layout_width="100dp"
       android:layout_height="wrap_content"
       android:text="العروض"
       android:textSize="23dp"
@@ -54,7 +54,7 @@
       android:background="@drawable/button"
       android:layout_below="@+id/gifImage"
       android:layout_marginTop="@dimen/_5sdp"
-      android:layout_marginLeft="@dimen/_35sdp"
+      android:layout_marginLeft="@dimen/_32sdp"
       />
 
   <Button
