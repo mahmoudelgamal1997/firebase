@@ -6,6 +6,9 @@
     <dimen name="text_size">20dp</dimen>
 
 
+        <dimen name="margin_small">8dp</dimen>
+        <dimen name="margin_normal">16dp</dimen>
+
     <dimen name="_1sdp">3.60dp</dimen>
     <dimen name="_2sdp">7.20dp</dimen>
     <dimen name="_3sdp">10.80dp</dimen>

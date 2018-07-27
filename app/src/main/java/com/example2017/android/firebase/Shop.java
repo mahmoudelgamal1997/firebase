@@ -53,35 +53,39 @@ public class Shop extends AppCompatActivity {
         sh=getSharedPreferences("plz",Context.MODE_PRIVATE );
 
         shop= FirebaseDatabase.getInstance().getReference().child("catorgy").child( sh.getString( "data_catorgy","emputy")).child( sh.getString( "data_catorgy","emputy")).child( sh.getString( "data_city","emputy"));
+
         clicksOnshop=FirebaseDatabase.getInstance().getReference().child("ShopVisitors");
 
         shop.keepSynced(true);
         clicksOnshop.keepSynced(true);
 
-        //to view a custom text  when data is emputy
-       shop.addValueEventListener(new ValueEventListener() {
-        @Override
-         public void onDataChange(DataSnapshot dataSnapshot) {
+        try {
+            //to view a custom text  when data is emputy
+            shop.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
 
-        if (dataSnapshot.getChildrenCount()==0){
+                    if (dataSnapshot.getChildrenCount() == 0) {
 
-          CustomAppearText.setText("No Item To Appear\n "+"(لا يوجد بيانات)");
+                        CustomAppearText.setText("No Item To Appear\n " + "(لا يوجد بيانات)");
 
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+
+            retrieve(shop);
+
+
+        }catch (FirebaseException e){
+            Toast.makeText(getApplication(),e.getMessage(),Toast.LENGTH_LONG).show();
         }
-
-    }
-
-    @Override
-    public void onCancelled(DatabaseError databaseError) {
-
-    }
-});
-
-
-        retrieve(shop);
-
-
-
     }
 
 

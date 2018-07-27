@@ -9,7 +9,7 @@
 
   <pl.droidsonroids.gif.GifImageView
       android:layout_width="match_parent"
-      android:layout_height="120dp"
+      android:layout_height="160dp"
       android:background="@drawable/gifmain"
       android:id="@+id/gifImage"
       />
@@ -26,7 +26,7 @@
       android:onClick="start"
       android:background="@drawable/button"
       android:layout_below="@+id/gifImage"
-      android:layout_marginTop="@dimen/_5sdp"
+      android:layout_marginTop="@dimen/_4sdp"
       android:layout_marginLeft="@dimen/_215sdp"
       />
 
@@ -40,7 +40,7 @@
       android:onClick="code"
       android:background="@drawable/button"
       android:layout_below="@+id/gifImage"
-      android:layout_marginTop="@dimen/_5sdp"
+      android:layout_marginTop="@dimen/_4sdp"
       android:layout_marginLeft="@dimen/_120sdp"
       />
 
@@ -53,7 +53,7 @@
       android:id="@+id/button6"
       android:background="@drawable/button"
       android:layout_below="@+id/gifImage"
-      android:layout_marginTop="@dimen/_5sdp"
+      android:layout_marginTop="@dimen/_4sdp"
       android:layout_marginLeft="@dimen/_32sdp"
       />
 
@@ -66,7 +66,7 @@
       android:onClick="using"
       android:background="@drawable/button"
       android:layout_below="@+id/gifImage"
-      android:layout_marginTop="@dimen/_5sdp"
+      android:layout_marginTop="@dimen/_4sdp"
       android:foreground="@mipmap/information"
       android:layout_marginLeft="@dimen/_2sdp"
       />
@@ -78,7 +78,6 @@
       android:layout_height="match_parent"
       android:id="@+id/fragment"
       android:layout_below="@+id/button3"
-      android:layout_marginTop="@dimen/_3sdp"
       >
 
   </RelativeLayout>

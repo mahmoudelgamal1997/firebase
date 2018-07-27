@@ -7,13 +7,15 @@ import com.squareup.picasso.OkHttpDownloader;
 import com.squareup.picasso.Picasso;
 
 /**
- * Created by M7moud on 11-Dec-17.
+ * Created by M7moud on 25-Jul-18.
  */
-public class firebase extends Application {
-//this class to cash images in app
+public class firebase  extends Application {
+
+
     @Override
     public void onCreate() {
         super.onCreate();
+
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 
         Picasso.Builder builder=new Picasso.Builder(this);
@@ -22,7 +24,5 @@ public class firebase extends Application {
         built.setIndicatorsEnabled(false);
         built.setLoggingEnabled(true);
         Picasso.setSingletonInstance(built);
-
-
     }
 }

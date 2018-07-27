@@ -10,7 +10,7 @@
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
         tools:context="com.example2017.android.firebase.CheckCode"
-        android:background="@drawable/main"
+        android:background="#FFFFFFFF"
         >
 
 
@@ -39,7 +39,7 @@
         <EditText
             android:layout_width="@dimen/_47sdp"
             android:layout_height="@dimen/_60sdp"
-            android:background="@drawable/border_edittext"
+            android:background="@drawable/circle_edittext"
             android:id="@+id/editText10"
             android:maxLength="1"
             android:paddingLeft="@dimen/_15sdp"
@@ -54,7 +54,7 @@
         <EditText
             android:layout_width="@dimen/_47sdp"
             android:layout_height="@dimen/_60sdp"
-            android:background="@drawable/border_edittext"
+            android:background="@drawable/circle_edittext"
             android:paddingLeft="@dimen/_15sdp"
             android:textSize="@dimen/_25sdp"
             android:maxLength="1"
@@ -69,7 +69,7 @@
         <EditText
             android:layout_width="@dimen/_47sdp"
             android:layout_height="@dimen/_60sdp"
-            android:background="@drawable/border_edittext"
+            android:background="@drawable/circle_edittext"
             android:paddingLeft="15dp"
             android:textSize="25dp"
             android:id="@+id/editText12"
@@ -85,7 +85,7 @@
         <EditText
             android:layout_width="@dimen/_47sdp"
             android:layout_height="@dimen/_60sdp"
-            android:background="@drawable/border_edittext"
+            android:background="@drawable/circle_edittext"
             android:paddingLeft="15dp"
             android:textSize="25dp"
             android:maxLength="1"
@@ -104,7 +104,7 @@
             android:paddingLeft="15dp"
             android:textSize="25dp"
             android:maxLength="1"
-            android:background="@drawable/border_edittext"
+            android:background="@drawable/circle_edittext"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textView4"
             android:layout_marginLeft="@dimen/_203sdp"
@@ -120,7 +120,7 @@
             android:paddingLeft="15dp"
             android:textSize="25dp"
             android:maxLength="1"
-            android:background="@drawable/border_edittext"
+            android:background="@drawable/circle_edittext"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textView4"
             android:layout_marginLeft="@dimen/_252sdp"

@@ -6,11 +6,14 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -36,6 +39,8 @@ public class Fragment_CheckCode extends Fragment  {
     Spinner spinner;
     DatabaseReference check, show,daily_details;
     EditText code_edit,code_edit1,code_edit2,code_edit3,code_edit4,code_edit5,code_edit6;
+    Button button;
+
     String shop_selected,data_code;
     MediaPlayer mediaPlayer;
     AlertDialog.Builder alert;
@@ -63,7 +68,7 @@ public class Fragment_CheckCode extends Fragment  {
         mediaPlayer = MediaPlayer.create(getActivity(),R.raw.notify);
 
         code_edit = (EditText) view2.findViewById(R.id.editText10);
-
+        button=(Button)view2.findViewById(R.id.bb);
 
         code_edit1 = (EditText)view2. findViewById(R.id.editText10);
         code_edit2 = (EditText)view2. findViewById(R.id.editText11);
@@ -112,6 +117,211 @@ public class Fragment_CheckCode extends Fragment  {
 
 
 
+
+
+        code_edit1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                int lenght=code_edit1.getText().length();
+                if (lenght>=1){
+
+                    code_edit2.requestFocus();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        code_edit2.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                int lenght=code_edit2.getText().length();
+                if (lenght>=1){
+
+                    code_edit3.requestFocus();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        code_edit3.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                int lenght=code_edit3.getText().length();
+                if (lenght>=1){
+
+                    code_edit4.requestFocus();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        code_edit4.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                int lenght=code_edit4.getText().length();
+                if (lenght>=1){
+
+                    code_edit5.requestFocus();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        code_edit5.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                int lenght=code_edit5.getText().length();
+                if (lenght>=1){
+
+                    code_edit6.requestFocus();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+
+
+
+                //to prevent dialog from appear more
+                avoidAlertDialogmutltiappear=0;
+
+                //to collect all codes in one string
+                codeCollection=code_edit1.getText().toString().toLowerCase().trim()+
+                        code_edit2.getText().toString().toLowerCase().trim()+
+                        code_edit3.getText().toString().toLowerCase().trim()+
+                        code_edit4.getText().toString().toLowerCase().trim()+
+                        code_edit5.getText().toString().toLowerCase().trim()+
+                        code_edit6.getText().toString().toLowerCase().trim();
+
+
+                if(!TextUtils.isEmpty(codeCollection.toString())){
+// Search for code
+                    show.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.hasChild(codeCollection.toString().toLowerCase().trim()))
+                            {
+                                retrive_single();
+
+                            }else{
+
+                                mediaPlayer.start();
+                                alert.setMessage("this code isn't correct");
+                                alert.setCancelable(true);
+                                alert.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                                    }
+                                });
+
+                                AlertDialog a=alert.create();
+                                a.show();
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+
+                }else{
+                    Toast.makeText(getActivity(),"Enter Your Code",Toast.LENGTH_LONG).show();
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            }
+        });
+
+
+
         return view2;
     }
 
@@ -119,7 +329,7 @@ public class Fragment_CheckCode extends Fragment  {
 
 
 
-    public void but(View v) {
+    public void but() {
 
         //to prevent dialog from appear more
         avoidAlertDialogmutltiappear=0;
@@ -331,6 +541,11 @@ public class Fragment_CheckCode extends Fragment  {
 
 
         String collection=""+year+"-"+(month+1)+"-"+day +"   "+hour+":"+minute;
+
+
+
+
+
 
         return collection;
     }

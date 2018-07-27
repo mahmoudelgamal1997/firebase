@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -50,8 +51,8 @@ public class Fragment_Catorgy extends Fragment{
 
         mre = (RecyclerView)view3. findViewById(R.id.view2);
         mre.setHasFixedSize(true);
-        mre.setLayoutManager(new LinearLayoutManager(getActivity()));
-
+      //  mre.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mre.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         Retrive();
 
 
