@@ -4,9 +4,11 @@ package com.example2017.android.firebase;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,8 +37,9 @@ public class shop_details extends AppCompatActivity {
     TextView title, home, number, details, whats;
     SharedPreferences sh;
     public DatabaseReference def, calc ,photos;
-    ImageView imageView,img1,img2,img3,img4,img5,img6, imageViewfacebook, imageViewInstgram, imageViewTwitter;
+    ImageView imageView,img1,img2,img3,img4,img5,img6,img7,img8,img9,img10,img11,img12, imageViewfacebook, imageViewInstgram, imageViewTwitter;
     GridView gridView;
+    CardView card_whats;
 
     ArrayList<String>  GridView_arrayList  =new ArrayList<>();
     @Override
@@ -48,7 +51,7 @@ public class shop_details extends AppCompatActivity {
 
 
 
-
+final Typeface custom_font= Typeface.createFromAsset(getAssets(),"fonts/Flower Power Personal Use.ttf");
 
 
 
@@ -66,6 +69,21 @@ public class shop_details extends AppCompatActivity {
         img4 = (ImageView) findViewById(R.id.imageView14);
         img5 = (ImageView) findViewById(R.id.imageView15);
         img6 = (ImageView) findViewById(R.id.imageView16);
+        img7 = (ImageView) findViewById(R.id.imageView17);
+        img8 = (ImageView) findViewById(R.id.imageView18);
+        img9 = (ImageView) findViewById(R.id.imageView19);
+        img10 = (ImageView) findViewById(R.id.imageView20);
+        img11= (ImageView) findViewById(R.id.imageView21);
+        img12= (ImageView) findViewById(R.id.imageView22);
+
+
+        card_whats=(CardView)findViewById(R.id.card_view_whats);
+
+
+
+
+
+
 
         imageViewfacebook = (ImageView) findViewById(R.id.imageView_facebook);
         imageViewTwitter = (ImageView) findViewById(R.id.imageView_twitter);
@@ -97,6 +115,8 @@ public class shop_details extends AppCompatActivity {
                 .child(shop_name);
         photos = def.child("photos");
 
+
+
       //  String url=("https://fireapp-7a801.firebaseio.com/catorgy/"+catorgy_name+ "/"+city_name+"/"+catorgy_name+"/"+shop_name).trim();
 
        // String formatedString =  String.format("%1$s", url);
@@ -114,18 +134,53 @@ public class shop_details extends AppCompatActivity {
 
 
                     String details_data = map.get("shop_details");
+
                     String mobile_data = map.get("shop_mobile");
                     String mobile_data2 = map.get("shop_mobile2");
                     String mobile_data3 = map.get("shop_mobile3");
                     String mobile_data4 = map.get("shop_mobile4");
 
-                    String CollectionMobileNumber = mobile_data + "\n" + mobile_data2 + "\n" + mobile_data3 + "\n" + mobile_data4;
+                    String CollectionMobileNumber="";
+                    if (mobile_data != null){
+                       CollectionMobileNumber = mobile_data;
+
+                    }
+
+                    if (mobile_data2 != null){
+                      CollectionMobileNumber +=  "\n" + mobile_data2;
+                    }
+                    if (mobile_data3 != null){
+                        CollectionMobileNumber   += "\n" + mobile_data3;
+                    }
+
+                    if (mobile_data4 != null){
+                        CollectionMobileNumber   += "\n" + mobile_data4;
+                    }
+
+
 
                     String home_data = map.get("shop_home");
                     String home_data2 = map.get("shop_home2");
                     String home_data3 = map.get("shop_home3");
 
-                    String CollectionHomeNumber = home_data + "\n" + home_data2 + "\n" + home_data3;
+
+                    String CollectionHomeNumber="";
+                    if (home_data != null){
+                        CollectionHomeNumber = home_data;
+
+                    }
+
+                    if (home_data2 != null){
+                        CollectionHomeNumber +=  "\n" + home_data2;
+                    }
+                    if (home_data2 != null){
+                        CollectionHomeNumber   += "\n" + home_data3;
+                    }
+
+
+
+
+
 
                     final String img = map.get("catorgy_image");
 
@@ -136,10 +191,96 @@ public class shop_details extends AppCompatActivity {
                     final String TwitterLink = map.get("Twitter");
 
 
+                    if (WhatsLink != null){
+                        whats.setText(WhatsLink);
+                    }else {
+
+                        card_whats.setVisibility(View.GONE);
+                    }
+
+
                     final String img1 = map.get("img1");
                     final String img2 = map.get("img2");
+                    final String img3 = map.get("img3");
+                    final String img4 = map.get("img4");
+                    final String img5 = map.get("img5");
+                    final String img6 = map.get("img6");
+                    final String img7 = map.get("img7");
+                    final String img8 = map.get("img8");
+                    final String img9 = map.get("img9");
+                    final String img10 = map.get("img10");
+                    final String img11 = map.get("img11");
+                    final String img12 = map.get("img12");
 
-               //     SetCustomImage(getApplicationContext(),img1);
+
+
+                    if (img1 != null) {
+
+                            SetCustomImage(getApplicationContext(),img1,"imageView11");
+                    }
+
+                    if (img2 != null) {
+
+                        SetCustomImage(getApplicationContext(),img1,"imageView12");
+                    }
+
+                    if (img3 != null) {
+
+                        SetCustomImage(getApplicationContext(),img1,"imageView13");
+                    }
+
+                    if (img4 != null) {
+
+                        SetCustomImage(getApplicationContext(),img1,"imageView14");
+                    }
+
+                    if (img5 != null) {
+
+                        SetCustomImage(getApplicationContext(),img1,"imageView15");
+                    }
+
+                    if (img6 != null) {
+
+                        SetCustomImage(getApplicationContext(),img1,"imageView16");
+                    }
+
+                    if (img7 != null) {
+
+                        SetCustomImage(getApplicationContext(),img1,"imageView17");
+                    }
+
+                    if (img8 != null) {
+
+                        SetCustomImage(getApplicationContext(),img1,"imageView18");
+                    }
+                    if (img9 != null) {
+
+                        SetCustomImage(getApplicationContext(),img1,"imageView19");
+                    }
+                    if (img10 != null) {
+
+                        SetCustomImage(getApplicationContext(),img1,"imageView20");
+                    }
+                    if (img11 != null) {
+
+                        SetCustomImage(getApplicationContext(),img1,"imageView21");
+                    }
+                    if (img12 != null) {
+
+                        SetCustomImage(getApplicationContext(),img1,"imageView22");
+                    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -152,7 +293,7 @@ public class shop_details extends AppCompatActivity {
                     details.setText(details_data);
                     home.setText(CollectionHomeNumber);
                     number.setText(CollectionMobileNumber);
-                    title.setText(name);
+                    title.setTypeface(custom_font);
                  //   whats.setText(WhatsLink);
 
                     imageViewfacebook.setOnClickListener(new View.OnClickListener() {
@@ -192,45 +333,6 @@ public class shop_details extends AppCompatActivity {
             });
 
 
-/*
-
-
-        photos.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                ArrayList<String> arrayList= new ArrayList<>();
-                GridViewItem model=dataSnapshot.getValue(GridViewItem.class);
-              //  arrayList.add(model.getImg());
-
-                Toast.makeText(getApplicationContext(),model.getImg(),Toast.LENGTH_LONG).show();
-             //   gridView.setAdapter(new gridviewList(this,arrayList));
-
-
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-
-*/
 
 
 
@@ -265,10 +367,10 @@ public class shop_details extends AppCompatActivity {
 
 
 
-    public void SetCustomImage(final Context cnt, final String img) {
+    public void SetCustomImage(final Context cnt, final String img,String id) {
 
-
-        final ImageView imgview = (ImageView) findViewById(R.id.imageView11);
+        int IdResource = cnt.getResources().getIdentifier(id,"id",cnt.getPackageName());
+        final ImageView imgview = (ImageView) findViewById(IdResource);
 
         // .networkPolicy(NetworkPolicy.OFFLINE)
         //to cash data
@@ -288,6 +390,8 @@ public class shop_details extends AppCompatActivity {
 
 
     }
+
+
 
 
     class gridviewList extends BaseAdapter {
