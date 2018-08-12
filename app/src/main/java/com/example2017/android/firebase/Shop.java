@@ -31,7 +31,7 @@ import java.util.Map;
 
 public class Shop extends AppCompatActivity {
     TextView CustomAppearText;
-    SharedPreferences sh;
+    SharedPreferences sh,sh2;
     DatabaseReference shop,clicksOnshop;
     RecyclerView recyclerView;
     @Override
@@ -112,14 +112,16 @@ private void retrieve(DatabaseReference data){
                 public void onClick(View view) {
                     sh=getSharedPreferences("plz",Context.MODE_PRIVATE );
                     SharedPreferences.Editor  mydata=sh.edit();
-                    mydata.putString( "data_shop",model.getCatorgy_name() );
+                    mydata.putString("data_shop",model.getCatorgy_name());
+                    mydata.putString("word","shop");
                     mydata.commit();
 
 
 
 
 
-                        //to calculate clicks
+
+                    //to calculate clicks
 
                         calculateClicks(model.getCatorgy_name());
 

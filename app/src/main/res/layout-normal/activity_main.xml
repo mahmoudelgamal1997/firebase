@@ -51,6 +51,7 @@
       android:textSize="23dp"
       android:textColor="#000000"
       android:id="@+id/button6"
+      android:onClick="offer"
       android:background="@drawable/button"
       android:layout_below="@+id/gifImage"
       android:layout_marginTop="@dimen/_4sdp"

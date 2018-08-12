@@ -32,29 +32,6 @@ DatabaseReference clicksOnshop;
         Firebase.setAndroidContext(this);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         but1=(Button)findViewById(R.id.button4);
         but2=(Button)findViewById(R.id.button3);
         but3=(Button)findViewById(R.id.button6);
@@ -126,6 +103,23 @@ public void start(View v) {
 
         getFragmentManager().beginTransaction()
                 .add(R.id.fragment,new Fragment_CheckCode(),"code").commit();
+
+
+    }
+
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public void offer(View v) {
+
+        but1.setBackground(getDrawable(R.drawable.button));
+        but2.setBackground(getDrawable(R.drawable.button));
+        but3.setBackground(getDrawable(R.drawable.button_red));
+        but4.setBackground(getDrawable(R.drawable.button));
+
+
+
+        getFragmentManager().beginTransaction()
+                .add(R.id.fragment,new Offers(),"offer").commit();
 
 
     }
