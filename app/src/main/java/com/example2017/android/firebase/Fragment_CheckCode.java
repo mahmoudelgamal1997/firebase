@@ -105,6 +105,7 @@ public class Fragment_CheckCode extends Fragment  {
                 TextView textView = (TextView) v.findViewById(R.id.textView);
                 textView.setText(model);
                 shop_selected = model;
+                Toast.makeText(getActivity(), shop_selected.toString(), Toast.LENGTH_SHORT).show();
 
             }
 

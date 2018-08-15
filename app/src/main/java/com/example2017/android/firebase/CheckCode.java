@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -85,6 +86,7 @@ public class CheckCode extends AppCompatActivity {
                 TextView textView = (TextView) v.findViewById(R.id.textView);
                 textView.setText(model);
                 shop_selected = model;
+
 
             }
 
