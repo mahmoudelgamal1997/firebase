@@ -16,6 +16,8 @@ import com.squareup.picasso.OkHttpDownloader;
 import com.squareup.picasso.Picasso;
 
 import android.app.Fragment;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
@@ -28,7 +30,13 @@ DatabaseReference clicksOnshop;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+     //   setContentView(R.layout.activity_main);
+
+        getSupportActionBar().hide(); //<< this
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        this.setContentView(R.layout.activity_main);
+
+
         Firebase.setAndroidContext(this);
 
 
@@ -44,6 +52,8 @@ DatabaseReference clicksOnshop;
         ActivityCompat.requestPermissions(MainActivity.this,
                 new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE,android.Manifest.permission.READ_EXTERNAL_STORAGE},
                 1);
+
+
 
 
 

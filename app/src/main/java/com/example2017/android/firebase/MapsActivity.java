@@ -28,8 +28,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
         sh = getSharedPreferences("plz", Context.MODE_PRIVATE);
 
-        lat=Double.parseDouble(sh.getString("latitude","22222"));
-        lon=Double.parseDouble(sh.getString("longtude","22222"));
+        lat=Double.parseDouble(sh.getString("adress_latitude","30"));
+        lon=Double.parseDouble(sh.getString("adress_longtude","50"));
 
         Toast.makeText(MapsActivity.this,""+lat , Toast.LENGTH_SHORT).show();
 
@@ -48,10 +48,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        final String shop_name = sh.getString("data_shop", "your place").trim();
 
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(lat, lon);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        mMap.addMarker(new MarkerOptions().position(sydney).title(shop_name));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney,15));
     }
 }

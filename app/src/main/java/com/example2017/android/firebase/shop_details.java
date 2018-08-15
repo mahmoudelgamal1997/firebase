@@ -37,14 +37,14 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class shop_details extends AppCompatActivity {
-    TextView title, home, number, adress, whats;
+    TextView title, home, number, adress, details;
     SharedPreferences sh,sh2;
     public DatabaseReference def, calc, photos,offers,branches,shop2;
     ImageView imageView, img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, imageViewfacebook, imageViewInstgram, imageViewTwitter;
     CardView card_whats;
-    Button maps;
+    ImageView maps;
     Spinner spinner_branch;
-    String shop_selected;
+    String shop_selected,latit,longtit;
 
 
     @Override
@@ -72,24 +72,20 @@ public class shop_details extends AppCompatActivity {
         img10 = (ImageView) findViewById(R.id.imageView20);
         img11 = (ImageView) findViewById(R.id.imageView21);
         img12 = (ImageView) findViewById(R.id.imageView22);
-
         spinner_branch=(Spinner)findViewById(R.id.spinner_branch);
-
         card_whats = (CardView) findViewById(R.id.card_view_mobile);
-
-
         imageViewfacebook = (ImageView) findViewById(R.id.imageView_facebook);
         imageViewInstgram = (ImageView) findViewById(R.id.imageView_instgram);
         number = (TextView) findViewById(R.id.id_mobile);
-
-
+        details=(TextView)findViewById(R.id.id_Shop_details);
         adress = (TextView) findViewById(R.id.id_Shop_adress);
-        calc = FirebaseDatabase.getInstance().getReference().child("covernment");
+        maps=(ImageView)findViewById(R.id.id_map);
 
+
+        calc = FirebaseDatabase.getInstance().getReference().child("covernment");
 
         sh = getSharedPreferences("plz", Context.MODE_PRIVATE);
         sh2 = getSharedPreferences("plz2", Context.MODE_PRIVATE);
-
 
         String catorgy_name = sh.getString("data_catorgy", "emputy").trim();
         String city_name = sh.getString("data_city", "emputy").trim();
@@ -229,7 +225,7 @@ public class shop_details extends AppCompatActivity {
                     final String name = map.get("catorgy_name");
 
                     final String FacebookLink = map.get("Facebook");
-                    final String WhatsLink = map.get("Instgram");
+                    final String Instgram = map.get("Instgram");
 
 
 /*
@@ -320,7 +316,28 @@ public class shop_details extends AppCompatActivity {
 
 
 
+                    latit = map.get("latitude");
+                    longtit= map.get("longtude");
 
+                    maps.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view)
+                        {
+
+                            sh=getSharedPreferences("plz",Context.MODE_PRIVATE );
+                            SharedPreferences.Editor  mydata=sh.edit();
+                            mydata.putString( "adress_latitude",latit );
+                            mydata.putString( "adress_longtude",longtit );
+                            mydata.commit();
+
+
+
+                            Intent intent=new Intent(getApplicationContext(),MapsActivity.class);
+                            startActivity(intent);
+
+
+                        }
+                    });
 
 
 
