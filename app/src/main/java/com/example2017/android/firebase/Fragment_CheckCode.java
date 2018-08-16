@@ -1,6 +1,7 @@
 package com.example2017.android.firebase;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +29,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.NetworkPolicy;
+import com.squareup.picasso.Picasso;
 
 import java.util.Calendar;
 import java.util.Map;
@@ -57,7 +62,7 @@ public class Fragment_CheckCode extends Fragment  {
 
         View view2=inflater.inflate(R.layout.activity_check_code,null);
 
-
+        final View view3=inflater.inflate(R.layout.checkcode_style,null);
 
         Firebase.setAndroidContext(getActivity());
 
@@ -87,27 +92,38 @@ public class Fragment_CheckCode extends Fragment  {
 
         //   Toast.makeText(getApplicationContext(),codeCollection,Toast.LENGTH_LONG).show();
 
-        check = FirebaseDatabase.getInstance().getReferenceFromUrl("https://fireapp-7a801.firebaseio.com/CodeValue");
+        check = FirebaseDatabase.getInstance().getReferenceFromUrl("https://fireapp-7a801.firebaseio.com/CodeValue").child("spinner");
         show = FirebaseDatabase.getInstance().getReference().child("codes");
         daily_details=FirebaseDatabase.getInstance().getReference().child("details").push();
         spinner = (Spinner)view2.findViewById(R.id.spinner);
 
 
-        FirebaseListAdapter<String> firebaseListAdapter = new FirebaseListAdapter<String>(
+        FirebaseListAdapter<Posts> firebaseListAdapter = new FirebaseListAdapter<Posts>(
                 getActivity(),
-                String.class,
-                R.layout.text_style,
+                Posts.class,
+                R.layout.checkcode_style,
                 check
         ) {
             @Override
-            protected void populateView(View v, String model, int position) {
+            protected void populateView(View v, Posts model, int position) {
+                ImageView imageView=(ImageView)v.findViewById(R.id.shopimage);
+                TextView textView = (TextView) v.findViewById(R.id.text_shopname);
 
-                TextView textView = (TextView) v.findViewById(R.id.textView);
-                textView.setText(model);
-                shop_selected = model;
-                Toast.makeText(getActivity(), shop_selected.toString(), Toast.LENGTH_SHORT).show();
+
+
+
+
+                    textView.setText(model.getShop_name());
+                    shop_selected = model.getShop_name();
+
+
+                    SetImage(getActivity(),model.getShop_img(),v);
+
 
             }
+
+
+
 
         };
         spinner.setAdapter(firebaseListAdapter);
@@ -386,6 +402,26 @@ public class Fragment_CheckCode extends Fragment  {
 
     }
 
+
+
+    public void SetImage(final Context cnt, final String img,View v) {
+
+        final ImageView imgview = (ImageView)v.findViewById(R.id.shopimage);
+
+
+        Picasso.with(cnt).load(img).networkPolicy(NetworkPolicy.OFFLINE).placeholder(R.drawable.progress).into(imgview, new Callback() {
+            @Override
+            public void onSuccess() {
+
+            }
+
+            @Override
+            public void onError() {
+
+                Picasso.with(cnt).load(img).placeholder(R.drawable.progress).into(imgview);
+            }
+        });
+    }
 
 
 
