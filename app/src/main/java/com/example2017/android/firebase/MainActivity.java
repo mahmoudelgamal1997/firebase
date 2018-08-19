@@ -55,6 +55,9 @@ DatabaseReference clicksOnshop;
 
 
 
+        ActivityCompat.requestPermissions(MainActivity.this,
+                new String[]{android.Manifest.permission.CALL_PHONE},
+                1);
 
 
         clicksOnshop = FirebaseDatabase.getInstance().getReference().child("covernment");

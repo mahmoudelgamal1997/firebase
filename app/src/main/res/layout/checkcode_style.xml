@@ -8,7 +8,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
+
+        android:layout_marginTop="10dp"
         android:id="@+id/text_shopname"
+        android:gravity="center_vertical"
         android:textSize="23dp"
         />
     <ImageView
@@ -16,6 +19,8 @@
         android:layout_height="50dp"
         android:id="@+id/shopimage"
         android:layout_alignEnd="@+id/text_shopname"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="10dp"
         />
 
 

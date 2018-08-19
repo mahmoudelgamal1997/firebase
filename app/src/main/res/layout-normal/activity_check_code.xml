@@ -38,7 +38,7 @@
 
         <EditText
             android:layout_width="@dimen/_47sdp"
-            android:layout_height="@dimen/_60sdp"
+            android:layout_height="@dimen/_47sdp"
             android:background="@drawable/circle_edittext"
             android:id="@+id/editText10"
             android:maxLength="1"
@@ -53,7 +53,7 @@
 
         <EditText
             android:layout_width="@dimen/_47sdp"
-            android:layout_height="@dimen/_60sdp"
+            android:layout_height="@dimen/_47sdp"
             android:background="@drawable/circle_edittext"
             android:paddingLeft="@dimen/_15sdp"
             android:textSize="@dimen/_25sdp"
@@ -68,7 +68,7 @@
 
         <EditText
             android:layout_width="@dimen/_47sdp"
-            android:layout_height="@dimen/_60sdp"
+            android:layout_height="@dimen/_47sdp"
             android:background="@drawable/circle_edittext"
             android:paddingLeft="15dp"
             android:textSize="25dp"
@@ -84,7 +84,7 @@
 
         <EditText
             android:layout_width="@dimen/_47sdp"
-            android:layout_height="@dimen/_60sdp"
+            android:layout_height="@dimen/_47sdp"
             android:background="@drawable/circle_edittext"
             android:paddingLeft="15dp"
             android:textSize="25dp"
@@ -99,7 +99,7 @@
 
         <EditText
             android:layout_width="@dimen/_47sdp"
-            android:layout_height="@dimen/_60sdp"
+            android:layout_height="@dimen/_47sdp"
             android:id="@+id/editText14"
             android:paddingLeft="15dp"
             android:textSize="25dp"
@@ -115,7 +115,7 @@
 
         <EditText
             android:layout_width="@dimen/_47sdp"
-            android:layout_height="@dimen/_60sdp"
+            android:layout_height="@dimen/_47sdp"
             android:id="@+id/editText15"
             android:paddingLeft="15dp"
             android:textSize="25dp"

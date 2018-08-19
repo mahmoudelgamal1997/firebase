@@ -51,8 +51,26 @@ public class Fragment_Catorgy extends Fragment{
 
         mre = (RecyclerView)view3. findViewById(R.id.view2);
         mre.setHasFixedSize(true);
-      //  mre.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mre.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        //  mre.setLayoutManager(new LinearLayoutManager(getActivity()));
+      //  mre.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+
+        //max cell in one row =2
+        GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
+
+
+        layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                //repeat process every 5 cell
+                if (position   %5>0)
+                return 1;
+                else
+                return 2;
+            }
+        });
+
+        mre.setLayoutManager(layoutManager);
+
         Retrive();
 
 
@@ -81,8 +99,15 @@ public class Fragment_Catorgy extends Fragment{
                 mdatabase
 
         ) {
+
+
+
+
             @Override
             protected void populateViewHolder(Post_viewholder viewHolder, final Posts model, int position) {
+
+
+
 
                 viewHolder.SetTitle((model.getCatorgy_name()));
                 viewHolder.SetImage(getActivity(),model.getCatorgy_image());

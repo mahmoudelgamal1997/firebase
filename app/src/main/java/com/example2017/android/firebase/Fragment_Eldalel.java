@@ -143,7 +143,7 @@ public class Fragment_Eldalel extends Fragment {
 
             final ImageView imgview1 = (ImageView) view.findViewById(R.id.profile_image);
 
-            Picasso.with(cnt).load(R.drawable.cardviewicon).into(imgview1);
+            Picasso.with(cnt).load(R.drawable.logo).into(imgview1);
 
             // .networkPolicy(NetworkPolicy.OFFLINE)
             //to cash data

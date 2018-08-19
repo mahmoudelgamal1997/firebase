@@ -44,17 +44,17 @@
             android:layout_marginLeft="@dimen/_160sdp"
             android:fontFamily="sans-serif"
             android:textColor="#333"
-            android:textSize="18sp" />
+            android:textSize="20sp" />
 
 
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/profile_image"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="@dimen/_120sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:src="@drawable/cardviewicon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="152dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/logo"
             app:civ_border_width="2dp"
             app:civ_border_color="#FF000000"/>
 

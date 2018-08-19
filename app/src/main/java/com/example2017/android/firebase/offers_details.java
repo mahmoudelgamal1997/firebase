@@ -35,11 +35,9 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
-
-import java.util.ArrayList;
 import java.util.Map;
 
-public class shop_details extends AppCompatActivity {
+public class offers_details extends AppCompatActivity {
     TextView title, home, number, adress, details;
     SharedPreferences sh, sh2;
     public DatabaseReference def, calc, photos, offers, branches, shop2;
@@ -86,64 +84,50 @@ public class shop_details extends AppCompatActivity {
         sh = getSharedPreferences("plz", Context.MODE_PRIVATE);
         sh2 = getSharedPreferences("plz2", Context.MODE_PRIVATE);
 
-        String catorgy_name = sh.getString("data_catorgy", "emputy").trim();
-        String city_name = sh.getString("data_city", "emputy").trim();
         final String shop_name = sh.getString("data_shop", "emputy").trim();
-        String password = sh2.getString("password", "emputy");
 
-        if (String.valueOf(password).equals("offer")) {
-            def = FirebaseDatabase.getInstance().getReference().child("offers");
-        } else {
-            def = FirebaseDatabase.getInstance().getReference().child("catorgy")
-                    .child(catorgy_name)
-                    .child(catorgy_name)
-                    .child(city_name)
-                    .child(shop_name);
-
-            photos = def.child("photos");
-            branches = FirebaseDatabase.getInstance().getReference().child("branches").child(shop_name);
+        Toast.makeText(offers_details.this, shop_name, Toast.LENGTH_SHORT).show();
+        def = FirebaseDatabase.getInstance().getReference().child("offers")
+                .child(shop_name);
 
 
+        photos = def.child("photos");
+        branches = FirebaseDatabase.getInstance().getReference().child("branches").child(shop_name);
+
+
+
+
+
+    FirebaseListAdapter<String> firebaseListAdapter = new FirebaseListAdapter<String>(
+            this,
+            String.class,
+            R.layout.text_style,
+            branches
+    ) {
+        @Override
+        protected void populateView(View v, String model, int position) {
+
+
+            TextView textView = (TextView) v.findViewById(R.id.textView);
+            textView.setText(model);
+            shop_selected = model;
+            prepare();
         }
+    };
 
 
-        //  String url=("https://fireapp-7a801.firebaseio.com/catorgy/"+catorgy_name+ "/"+city_name+"/"+catorgy_name+"/"+shop_name).trim();
-
-        // String formatedString =  String.format("%1$s", url);
-        //   def = FirebaseDatabase.getInstance().getReferenceFromUrl(formatedString);
+    spinner_branch.setAdapter(firebaseListAdapter);
 
 
-        FirebaseListAdapter<String> firebaseListAdapter = new FirebaseListAdapter<String>(
-                this,
-                String.class,
-                R.layout.text_style,
-                branches
-        ) {
-            @Override
-            protected void populateView(View v, String model, int position) {
-
-
-                TextView textView = (TextView) v.findViewById(R.id.textView);
-                textView.setText(model);
-                shop_selected = model;
-                shop2 = def.child(shop_selected);
-                prepare();
-            }
-        };
-
-
-        spinner_branch.setAdapter(firebaseListAdapter);
-
-
-    }
+      }
 
 
     public void prepare() {
 
 
-        if (!shop2.equals(null)) {
+        if (!def.equals(null)) {
 
-            shop2.addValueEventListener(new ValueEventListener() {
+            def.addValueEventListener(new ValueEventListener() {
 
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -385,7 +369,7 @@ public class shop_details extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
-                 //   Toast.makeText(getApplication(), databaseError.getMessage(), Toast.LENGTH_LONG).show();
+                    //   Toast.makeText(getApplication(), databaseError.getMessage(), Toast.LENGTH_LONG).show();
 
                 }
             });

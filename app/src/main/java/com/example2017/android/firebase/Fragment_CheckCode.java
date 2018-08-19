@@ -98,35 +98,44 @@ public class Fragment_CheckCode extends Fragment  {
         spinner = (Spinner)view2.findViewById(R.id.spinner);
 
 
-        FirebaseListAdapter<Posts> firebaseListAdapter = new FirebaseListAdapter<Posts>(
-                getActivity(),
-                Posts.class,
-                R.layout.checkcode_style,
-                check
-        ) {
+
+        new Thread(new Runnable() {
             @Override
-            protected void populateView(View v, Posts model, int position) {
-                ImageView imageView=(ImageView)v.findViewById(R.id.shopimage);
-                TextView textView = (TextView) v.findViewById(R.id.text_shopname);
+            public void run() {
+
+                FirebaseListAdapter<Posts> firebaseListAdapter = new FirebaseListAdapter<Posts>(
+                        getActivity(),
+                        Posts.class,
+                        R.layout.checkcode_style,
+                        check
+                ) {
+                    @Override
+                    protected void populateView(View v, Posts model, int position) {
+
+                        TextView textView = (TextView) v.findViewById(R.id.text_shopname);
 
 
 
 
 
-                    textView.setText(model.getShop_name());
-                    shop_selected = model.getShop_name();
+                        textView.setText(model.getShop_name());
+                        shop_selected = model.getShop_name();
+
+                        SetImage(getActivity(),model.getShop_img(),v);
 
 
-                    SetImage(getActivity(),model.getShop_img(),v);
+                    }
+
+                };
+                spinner.setAdapter(firebaseListAdapter);
+
+
+
+
 
 
             }
-
-
-
-
-        };
-        spinner.setAdapter(firebaseListAdapter);
+        }).start();
 
 
 

@@ -27,7 +27,7 @@ import com.squareup.picasso.Picasso;
 public class Offers extends Fragment {
 
     RecyclerView mre;
-    private DatabaseReference mdatabase;
+    private DatabaseReference mdatabase,branches;
     SharedPreferences sh;
 
     public Offers()
@@ -76,6 +76,7 @@ public class Offers extends Fragment {
                 R.layout.new_cardview,
                 Post_viewholder.class,
                 mdatabase
+
         )
 
         {
@@ -89,11 +90,10 @@ public class Offers extends Fragment {
                     public void onClick(View view) {
                         sh=getActivity().getSharedPreferences("plz", Context.MODE_PRIVATE );
                         SharedPreferences.Editor  mydata=sh.edit();
-                        mydata.putString( "data_city",model.getTitle());
-                        mydata.putString( "password","offer");
+                        mydata.putString( "data_shop",model.getCatorgy_name());
                         mydata.commit();
 
-                        Intent intent=new Intent(getActivity(),shop_details.class);
+                        Intent intent=new Intent(getActivity(),offers_details.class);
                         startActivity(intent);
 
 
