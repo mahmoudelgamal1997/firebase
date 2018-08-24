@@ -18,21 +18,22 @@
       />
 
   <Button
-      android:layout_width="200dp"
+      android:layout_width="130dp"
       android:layout_height="80dp"
-      android:text="الدليل"
+      android:text=""
       android:textSize="29dp"
       android:textColor="#000000"
       android:id="@+id/button4"
       android:onClick="start"
       android:background="@drawable/button"
+      android:foreground="@drawable/home"
       android:layout_below="@+id/gifImage"
       android:layout_marginTop="@dimen/_5sdp"
-      android:layout_marginLeft="@dimen/_220sdp"
+      android:layout_marginLeft="440dp"
       />
 
   <Button
-      android:layout_width="200dp"
+      android:layout_width="130dp"
       android:layout_height="80dp"
       android:text="كارت الخصم"
       android:textSize="29dp"
@@ -42,11 +43,11 @@
       android:background="@drawable/button"
       android:layout_below="@+id/gifImage"
       android:layout_marginTop="@dimen/_5sdp"
-      android:layout_marginLeft="@dimen/_115sdp"
+      android:layout_marginLeft="290dp"
       />
 
   <Button
-      android:layout_width="150dp"
+      android:layout_width="130dp"
       android:layout_height="80dp"
       android:text="العروض"
       android:textSize="29dp"
@@ -55,11 +56,11 @@
       android:background="@drawable/button"
       android:layout_below="@+id/gifImage"
       android:layout_marginTop="@dimen/_5sdp"
-      android:layout_marginLeft="@dimen/_38sdp"
+      android:layout_marginLeft="@dimen/_40sdp"
       />
 
   <Button
-      android:layout_width="70dp"
+      android:layout_width="120dp"
       android:layout_height="80dp"
       android:textSize="23dp"
       android:textColor="#000000"

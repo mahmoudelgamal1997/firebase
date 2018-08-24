@@ -1,54 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+
+
+    <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-
-
-    android:fillViewport="true"
-
-    xmlns:card_view="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="#424242"
-        android:layout_weight="1"
         android:fillViewport="true"
 
         >
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
             android:id="@+id/imageView_shop"
             android:scaleType="fitXY"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="    Branches"
-            android:textSize="20dp"
+            android:text="@string/branches"
+            android:textSize="14dp"
             android:textColor="#FFFFFF"
             android:layout_below="@id/imageView_shop"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
             />
 
         <Spinner
-            android:layout_width="200dp"
-            android:layout_height="70dp"
+            android:layout_width="220dp"
+            android:layout_height="40dp"
             android:id="@+id/spinner_branch"
             android:layout_below="@+id/imageView_shop"
             android:gravity="center"
             android:textAlignment="center"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="40dp"
             android:layout_centerHorizontal="true"
             android:background="@drawable/spinner">
         </Spinner>
 
         <android.support.v7.widget.CardView
             android:id="@+id/card_view_mobile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="300dp"
+            android:layout_height="170dp"
             android:background="#e0e0e0"
             android:layout_margin="20dp"
             card_view:cardCornerRadius="20dp"
@@ -56,17 +51,16 @@
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:layout_below="@+id/spinner_branch"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
+          >
 
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="40dp"
                 android:id="@+id/id_Shop_details"
                 android:text=" adress "
                 android:gravity="center"
-                android:textSize="20dp"
+                android:textSize="14dp"
                 android:textColor="#000000"
                 android:background="#BDBDBD"
                 />
@@ -75,28 +69,27 @@
 
 
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginTop="105dp"
                 android:layout_marginLeft="20dp"
                 android:background="@mipmap/mobile"
                           />
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="70dp"
                 android:id="@+id/id_mobile"
                 android:layout_marginTop="111dp"
                 android:layout_marginLeft="30dp"
                 android:text ="mobile"
                 android:gravity="center_horizontal"
-                android:textSize="20dp"
+                android:textSize="14dp"
                 android:textColor="#000000"
-                android:autoLink="phone"
                 />
 
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginTop="65dp"
                 android:layout_marginLeft="20dp"
                 android:background="@mipmap/mapicon"
@@ -119,7 +112,7 @@
                 android:layout_marginLeft="30dp"
                 android:text ="adress"
                 android:gravity="center"
-                android:textSize="25dp"
+                android:textSize="14dp"
                 android:textColor="#000000"
                 />
 
@@ -129,11 +122,11 @@
 
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:id="@+id/imageView_facebook"
                 android:background="@drawable/facebook"
-                android:layout_marginTop="250dp"
+                android:layout_marginTop="200dp"
                 android:layout_marginLeft="10dp"
                 android:layout_below="@id/id_map"
                 android:visibility="invisible"
@@ -141,11 +134,11 @@
                 />
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:background="@drawable/instagram"
                 android:id="@+id/imageView_instgram"
-                android:layout_marginTop="250dp"
+                android:layout_marginTop="200dp"
                 android:layout_marginLeft="90dp"
                 android:layout_below="@+id/id_map"
                 android:visibility="invisible"
@@ -164,10 +157,21 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
                 android:orientation="horizontal"
                 >
+
+
+                <Button
+                    android:layout_width="20dp"
+                    android:layout_height="40dp"
+                    android:background="@mipmap/cursor"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+
+                    />
+
 
                 <ImageView
                     android:layout_width="70dp"
@@ -274,10 +278,7 @@
             </LinearLayout>
         </HorizontalScrollView>
 
-
     </RelativeLayout>
 
 
 
-
-</ScrollView>

@@ -30,7 +30,7 @@ DatabaseReference clicksOnshop;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-     //   setContentView(R.layout.activity_main);
+
 
         getSupportActionBar().hide(); //<< this
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -38,7 +38,6 @@ DatabaseReference clicksOnshop;
 
 
         Firebase.setAndroidContext(this);
-
 
         but1=(Button)findViewById(R.id.button4);
         but2=(Button)findViewById(R.id.button3);
@@ -50,15 +49,14 @@ DatabaseReference clicksOnshop;
 
 
         ActivityCompat.requestPermissions(MainActivity.this,
-                new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE,android.Manifest.permission.READ_EXTERNAL_STORAGE},
+                new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE,android.Manifest.permission.READ_EXTERNAL_STORAGE,android.Manifest.permission.CALL_PHONE},
                 1);
 
 
 
         ActivityCompat.requestPermissions(MainActivity.this,
                 new String[]{android.Manifest.permission.CALL_PHONE},
-                1);
-
+                2);
 
         clicksOnshop = FirebaseDatabase.getInstance().getReference().child("covernment");
         fragment=(RelativeLayout)findViewById(R.id.fragment);
@@ -98,8 +96,9 @@ public void start(View v) {
 
 
 
-        Intent intent = new Intent(this, usingcard.class);
-        startActivity(intent);
+        getFragmentManager().beginTransaction()
+                .add(R.id.fragment,new usingcard(),"use").commit();
+
 
 
 
@@ -161,7 +160,6 @@ public void start(View v) {
 
                 return;
             }
-
 
 
     }}}}

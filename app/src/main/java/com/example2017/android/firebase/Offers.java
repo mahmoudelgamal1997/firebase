@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -53,6 +54,24 @@ public class Offers extends Fragment {
         mre.setHasFixedSize(true);
         mre.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        //max cell in one row =2
+        GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
+
+
+        layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                //repeat process every 5 cell
+                if (position   %5>0)
+                    return 1;
+                else
+                    return 2;
+            }
+        });
+
+        mre.setLayoutManager(layoutManager);
+
+
 
         Retrive();
 
@@ -73,7 +92,7 @@ public class Offers extends Fragment {
 
         FirebaseRecyclerAdapter<Posts,Post_viewholder> firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<Posts, Post_viewholder>(
                 Posts.class,
-                R.layout.new_cardview,
+                R.layout.cardview,
                 Post_viewholder.class,
                 mdatabase
 
@@ -129,18 +148,14 @@ public class Offers extends Fragment {
         }
 
 
-        public void SetImage(final Context cnt, final String img) {
+        public void SetImage(final Context cnt,final String img) {
 
             final ImageView imgview = (ImageView) view.findViewById(R.id.imageView);
 
 
-            final ImageView imgview1 = (ImageView) view.findViewById(R.id.profile_image);
-
-            Picasso.with(cnt).load(R.drawable.cardviewicon).into(imgview1);
-
             // .networkPolicy(NetworkPolicy.OFFLINE)
             //to cash data
-            Picasso.with(cnt).load(img).networkPolicy(NetworkPolicy.OFFLINE).into(imgview, new Callback() {
+            Picasso.with(cnt).load(img).networkPolicy(NetworkPolicy.OFFLINE).placeholder(R.drawable.progress).into(imgview, new Callback() {
                 @Override
                 public void onSuccess() {
 
@@ -153,7 +168,6 @@ public class Offers extends Fragment {
                 }
             });
         }
-
     }
 
 

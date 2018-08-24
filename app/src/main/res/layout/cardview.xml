@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
-
     app:cardBackgroundColor="@android:color/white"
     app:cardCornerRadius="10dp"
     app:cardElevation="2dp">
@@ -18,7 +17,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <!-- Les CardView agissent comme des FrameLayout,
@@ -38,12 +37,12 @@
         <TextView
             android:id="@+id/textView_desc"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?android:selectableItemBackground"
+            android:layout_height="match_parent"
+            android:background="#00BFA5"
             android:gravity="center"
             tools:text="Paris"
             android:fontFamily="sans-serif"
-            android:textColor="#333"
+            android:textColor="#FFFFFF"
             android:textSize="22sp" />
 
 

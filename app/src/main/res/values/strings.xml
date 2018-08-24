@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">VIP  GOLDEN CARD</string>
     <string name="title_activity_maps">Map</string>
+
+    <string name="enterthecode">enter the code </string>
+    <string name="selectTheshop"> Select The shop</string>
+    <string name="branches"> branches </string>
 </resources>

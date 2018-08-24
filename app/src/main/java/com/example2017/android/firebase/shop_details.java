@@ -14,6 +14,7 @@ import android.text.util.Linkify;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
@@ -53,7 +54,13 @@ public class shop_details extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
+        getSupportActionBar().hide(); //<< this
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_shop_details);
+
         Firebase.setAndroidContext(this);
 
 
@@ -91,9 +98,7 @@ public class shop_details extends AppCompatActivity {
         final String shop_name = sh.getString("data_shop", "emputy").trim();
         String password = sh2.getString("password", "emputy");
 
-        if (String.valueOf(password).equals("offer")) {
-            def = FirebaseDatabase.getInstance().getReference().child("offers");
-        } else {
+
             def = FirebaseDatabase.getInstance().getReference().child("catorgy")
                     .child(catorgy_name)
                     .child(catorgy_name)
@@ -104,7 +109,7 @@ public class shop_details extends AppCompatActivity {
             branches = FirebaseDatabase.getInstance().getReference().child("branches").child(shop_name);
 
 
-        }
+
 
 
         //  String url=("https://fireapp-7a801.firebaseio.com/catorgy/"+catorgy_name+ "/"+city_name+"/"+catorgy_name+"/"+shop_name).trim();
@@ -229,6 +234,10 @@ public class shop_details extends AppCompatActivity {
                     final String img12 = map.get("img12");
 
 
+
+
+
+
                     if (img1 != null) {
 
                         SetCustomImage(getApplicationContext(), img1, "imageView11");
@@ -284,6 +293,22 @@ public class shop_details extends AppCompatActivity {
 
                         SetCustomImage(getApplicationContext(), img12, "imageView22");
                     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                     if (details_data == null) {
@@ -428,10 +453,27 @@ public class shop_details extends AppCompatActivity {
         int IdResource = cnt.getResources().getIdentifier(id, "id", cnt.getPackageName());
         final ImageView imgview = (ImageView) findViewById(IdResource);
 
+
+        imgview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                sh=getSharedPreferences("plz", Context.MODE_PRIVATE );
+                SharedPreferences.Editor  mydata=sh.edit();
+                mydata.putString( "data_image",img);
+                mydata.commit();
+
+                Intent intent=new Intent(getApplicationContext(),gallery.class);
+                startActivity(intent);
+            }
+        });
+
+
+
         // .networkPolicy(NetworkPolicy.OFFLINE)
         //to cash data
 
-        Picasso.with(cnt).load(img).networkPolicy(NetworkPolicy.OFFLINE).placeholder(R.drawable.progress).into(imgview, new Callback() {
+        Picasso.with(cnt).load(img).transform(new RoundedTransformation(100, 0)).networkPolicy(NetworkPolicy.OFFLINE).placeholder(R.drawable.progress).into(imgview, new Callback() {
             @Override
             public void onSuccess() {
 

@@ -11,8 +11,8 @@
             android:layout_height="wrap_content"
             android:text="  New Text"
             android:layout_centerHorizontal="true"
-            android:textSize="@dimen/_25sdp"
+            android:textSize="16dp"
             android:id="@+id/textView"
-            android:layout_gravity="center|center_vertical" />
+            android:layout_gravity="center" />
 
 </RelativeLayout>

@@ -51,8 +51,6 @@ public class Fragment_Catorgy extends Fragment{
 
         mre = (RecyclerView)view3. findViewById(R.id.view2);
         mre.setHasFixedSize(true);
-        //  mre.setLayoutManager(new LinearLayoutManager(getActivity()));
-      //  mre.setLayoutManager(new GridLayoutManager(getActivity(), 2));
 
         //max cell in one row =2
         GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);

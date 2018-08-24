@@ -111,6 +111,7 @@ public class offers_details extends AppCompatActivity {
             TextView textView = (TextView) v.findViewById(R.id.textView);
             textView.setText(model);
             shop_selected = model;
+            shop2=def.child(shop_selected);
             prepare();
         }
     };
@@ -125,9 +126,9 @@ public class offers_details extends AppCompatActivity {
     public void prepare() {
 
 
-        if (!def.equals(null)) {
+        if (!shop2.equals(null)) {
 
-            def.addValueEventListener(new ValueEventListener() {
+            shop2.addValueEventListener(new ValueEventListener() {
 
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
